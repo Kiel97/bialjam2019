@@ -9,7 +9,7 @@
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 393216, 9, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393225, 9, 0 )
+tile_data = PoolIntArray( 327685, 3, 0, 393216, 9, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 15, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393225, 9, 0 )
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 58, 157 )
