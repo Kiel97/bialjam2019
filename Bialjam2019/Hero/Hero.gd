@@ -24,5 +24,7 @@ func get_input() -> void:
 	velocity.x = 0
 	if right:
 		velocity.x += MOVE_SPEED
+		$Sprite.flip_h = false
 	if left:
 		velocity.x -= MOVE_SPEED
+		$Sprite.flip_h = true
