@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Levels/ground_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Key/Key.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 
@@ -13,3 +14,13 @@ tile_data = PoolIntArray( 327685, 3, 0, 393216, 9, 0, 393217, 9, 0, 393218, 9, 0
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 58, 157 )
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Keys" type="Node" parent="Collectibles"]
+
+[node name="Key" parent="Collectibles/Keys" instance=ExtResource( 3 )]
+position = Vector2( 176, 140 )
+
+[node name="Key2" parent="Collectibles/Keys" instance=ExtResource( 3 )]
+position = Vector2( 204, 176 )
