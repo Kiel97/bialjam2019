@@ -30,6 +30,4 @@ func get_input() -> void:
 		velocity.x -= MOVE_SPEED
 		$Sprite.flip_h = true
 	if jump and is_on_floor():
-		print(velocity.y)
 		velocity.y = JUMP_SPEED
-		print(velocity.y)
