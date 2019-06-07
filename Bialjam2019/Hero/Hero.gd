@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 const MOVE_SPEED = 125
-const GRAVITY = 250
+const JUMP_SPEED = -300
+const GRAVITY = 1000
 
 var velocity : Vector2 = Vector2()
 
@@ -28,3 +29,7 @@ func get_input() -> void:
 	if left:
 		velocity.x -= MOVE_SPEED
 		$Sprite.flip_h = true
+	if jump and is_on_floor():
+		print(velocity.y)
+		velocity.y = JUMP_SPEED
+		print(velocity.y)
