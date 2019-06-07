@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#velocity.y += GRAVITY * delta
+	velocity.y += GRAVITY * delta
 	get_input()
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
