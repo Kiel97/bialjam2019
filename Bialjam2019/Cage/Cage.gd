@@ -31,5 +31,5 @@ func _on_Cage_body_entered(body: PhysicsBody2D) -> void:
 			if state == cage_states.PRISONER:
 				body.free_prisoner()
 			else:
-				body.substract_key()
+				body.use_key()
 			self.state = cage_states.OPENED

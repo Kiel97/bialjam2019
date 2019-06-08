@@ -9,12 +9,11 @@ const GRAVITY = 1000
 
 var velocity : Vector2 = Vector2()
 
-var prisoners_left : int = 0
-var keys_collected : int = 0
+var prisoners_left : int = 0 setget set_prisoners_left
+var keys_collected : int = 0 setget set_keys_collected
 
 func _ready() -> void:
-	refresh_key_counter()
-	refresh_prisoners_counter()
+	pass
 
 func _process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
@@ -37,25 +36,23 @@ func get_input() -> void:
 	if jump and is_on_floor():
 		velocity.y = JUMP_SPEED
 
+func set_prisoners_left(value: int) -> void:
+	prisoners_left = value
+	emit_signal("prisoners_count", self.prisoners_left)
+
+func set_keys_collected(value: int) -> void:
+	keys_collected = value
+	emit_signal("key_collected", self.keys_collected)
+
 func collect_key() -> void:
-	keys_collected += 1
-	refresh_key_counter()
+	self.keys_collected += 1
 
 func free_prisoner() -> void:
-	substract_key()
-	prisoners_left -= 1
-	refresh_prisoners_counter()
+	use_key()
+	self.prisoners_left -= 1
 
-func substract_key() -> void:
-	keys_collected -= 1
-	refresh_key_counter()
-
-func refresh_key_counter() -> void:
-	emit_signal("key_collected", keys_collected)
-
-func refresh_prisoners_counter() -> void:
-	emit_signal("prisoners_count", prisoners_left)
+func use_key() -> void:
+	self.keys_collected -= 1
 
 func _on_Level_counter_prisoners(value) -> void:
-	prisoners_left = value
-	refresh_prisoners_counter()
+	self.prisoners_left = value
