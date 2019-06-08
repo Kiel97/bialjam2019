@@ -37,5 +37,5 @@ func get_prisoners_count():
 	for cage in cages:
 		if cage.state == cage.cage_states.PRISONER:
 			prisoners += 1
-	prints("Prisoners:", prisoners)
+	
 	emit_signal("counter_prisoners", prisoners)

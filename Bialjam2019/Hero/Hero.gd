@@ -64,7 +64,7 @@ func get_input() -> void:
 		velocity.x -= MOVE_SPEED
 		$Sprite.flip_h = true
 		
-	if jump and is_on_floor() and not(self.state in [hero_states.JUMP, hero_states.FALL]):
+	if jump and not(self.state in [hero_states.JUMP, hero_states.FALL]):
 		self.state = hero_states.JUMP
 		velocity.y = JUMP_SPEED
 	elif self.state == hero_states.JUMP and !is_on_floor() and velocity.y > 0:

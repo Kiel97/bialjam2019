@@ -166,5 +166,8 @@ position = Vector2( 2447, 230 )
 state = 0
 
 [node name="Hero" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
 position = Vector2( 95, 556 )
 [connection signal="counter_prisoners" from="." to="Hero" method="_on_Level_counter_prisoners"]
+
+[editable path="Hero"]
