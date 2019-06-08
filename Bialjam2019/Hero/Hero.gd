@@ -31,6 +31,15 @@ func _process(delta: float) -> void:
 	if time_left == 0:
 		die()
 
+func _physics_process(delta: float) -> void:
+	
+	for idx in range(get_slide_count()):
+		var collision = get_slide_collision(idx)
+		if collision.collider.is_in_group("gate"):
+			if keys_collected > 0:
+				collision.collider.queue_free()
+				use_key()
+
 func get_input() -> void:
 	var left = Input.is_action_pressed("move_left")
 	var right = Input.is_action_pressed("move_right")
