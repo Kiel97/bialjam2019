@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var keys_counter : Label = $PanelContainer/CenterContainer/HBoxContainer/KeysCollected/KeyCounter
+onready var keys_counter : Label = $PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/KeysCollected/KeyCounter
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

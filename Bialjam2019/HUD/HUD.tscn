@@ -1,13 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://HUD/key_icon.png" type="Texture" id=2]
-[ext_resource path="res://HUD/time_icon.png" type="Texture" id=3]
-[ext_resource path="res://HUD/prisoner_icon.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://HUD/time_icon.png" type="Texture" id=4]
+[ext_resource path="res://HUD/prisoner_icon.png" type="Texture" id=5]
 
-[sub_resource type="StyleBoxLine" id=1]
-color = Color( 1, 1, 1, 1 )
-thickness = 2
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -17,66 +16,84 @@ anchor_right = 1.0
 margin_bottom = 20.0
 custom_styles/panel = SubResource( 1 )
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 318.0
-margin_bottom = 18.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_right = 320.0
+margin_bottom = 26.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer"]
-margin_left = 51.0
-margin_right = 265.0
+[node name="ExtraSpace" type="Control" parent="PanelContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 5.0
+margin_right = 320.0
+margin_bottom = 21.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer"]
+margin_left = 63.0
+margin_right = 257.0
 margin_bottom = 16.0
 custom_constants/separation = 40
 
-[node name="KeysCollected" type="HBoxContainer" parent="PanelContainer/CenterContainer/HBoxContainer"]
-margin_right = 39.0
+[node name="KeysCollected" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+editor/display_folded = true
+margin_right = 34.0
 margin_bottom = 16.0
 
-[node name="KeyIcon" type="TextureRect" parent="PanelContainer/CenterContainer/HBoxContainer/KeysCollected"]
+[node name="KeyIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/KeysCollected"]
 margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 2 )
 
-[node name="KeyCounter" type="Label" parent="PanelContainer/CenterContainer/HBoxContainer/KeysCollected"]
+[node name="KeyCounter" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/KeysCollected"]
 margin_left = 20.0
-margin_top = 1.0
-margin_right = 39.0
-margin_bottom = 15.0
+margin_top = 3.0
+margin_right = 34.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
 text = "x 0"
 
-[node name="TimeCounter" type="HBoxContainer" parent="PanelContainer/CenterContainer/HBoxContainer"]
+[node name="TimeCounter" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
 editor/display_folded = true
-margin_left = 79.0
-margin_right = 131.0
+margin_left = 74.0
+margin_right = 118.0
 margin_bottom = 16.0
 
-[node name="TimeIcon" type="TextureRect" parent="PanelContainer/CenterContainer/HBoxContainer/TimeCounter"]
-margin_right = 16.0
-margin_bottom = 16.0
-texture = ExtResource( 3 )
-
-[node name="TimeLeft" type="Label" parent="PanelContainer/CenterContainer/HBoxContainer/TimeCounter"]
-margin_left = 20.0
-margin_top = 1.0
-margin_right = 52.0
-margin_bottom = 15.0
-text = "9999"
-
-[node name="PrisonersCounter" type="HBoxContainer" parent="PanelContainer/CenterContainer/HBoxContainer"]
-editor/display_folded = true
-margin_left = 171.0
-margin_right = 214.0
-margin_bottom = 16.0
-
-[node name="PrisonerIcon" type="TextureRect" parent="PanelContainer/CenterContainer/HBoxContainer/PrisonersCounter"]
+[node name="TimeIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/TimeCounter"]
 margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 4 )
 
-[node name="PrisonersLeft" type="Label" parent="PanelContainer/CenterContainer/HBoxContainer/PrisonersCounter"]
+[node name="TimeLeft" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/TimeCounter"]
 margin_left = 20.0
-margin_top = 1.0
-margin_right = 43.0
-margin_bottom = 15.0
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "9999"
+
+[node name="PrisonersCounter" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+editor/display_folded = true
+margin_left = 158.0
+margin_right = 194.0
+margin_bottom = 16.0
+
+[node name="PrisonerIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PrisonersCounter"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 5 )
+
+[node name="PrisonersLeft" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PrisonersCounter"]
+margin_left = 20.0
+margin_top = 3.0
+margin_right = 36.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
 text = " x 0"
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer"]
+margin_top = 25.0
+margin_right = 320.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 1 )
