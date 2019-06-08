@@ -9,9 +9,17 @@ const JUMP_SPEED = -353
 const GRAVITY = 1000
 const TICKS_PER_SECOND = 21
 
+var hero_frames = {hero_states.IDLE: 0,
+					hero_states.JUMP: 32,
+					hero_states.FALL: 64,
+					hero_states.DEAD: 96}
+
+enum hero_states {IDLE, JUMP, FALL, DEAD}
+
 onready var timer : Timer = $Timer
 
 var velocity : Vector2 = Vector2()
+var state : int = hero_states.IDLE setget change_state
 
 var prisoners_left : int = 0 setget set_prisoners_left
 var keys_collected : int = 0 setget set_keys_collected
@@ -23,13 +31,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
-	if time_left > 0:
-		get_input()
+	if self.state != hero_states.DEAD:
+		if time_left == 0:
+			die()
+		else:
+			get_input()
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
-	if time_left == 0:
-		die()
+	#if time_left == 0 and self.state != hero_states.DEAD:
+	#	die()
 
 func _physics_process(delta: float) -> void:
 	
@@ -52,8 +63,14 @@ func get_input() -> void:
 	if left:
 		velocity.x -= MOVE_SPEED
 		$Sprite.flip_h = true
-	if jump and is_on_floor():
+		
+	if jump and is_on_floor() and not(self.state in [hero_states.JUMP, hero_states.FALL]):
+		self.state = hero_states.JUMP
 		velocity.y = JUMP_SPEED
+	elif self.state == hero_states.JUMP and !is_on_floor() and velocity.y > 0:
+		self.state = hero_states.FALL
+	elif self.state in [hero_states.JUMP, hero_states.FALL] and is_on_floor():
+		self.state = hero_states.IDLE
 
 func set_prisoners_left(value: int) -> void:
 	prisoners_left = value
@@ -67,6 +84,18 @@ func set_time_left(value: int) -> void:
 	time_left = value
 	emit_signal("time_changed", self.time_left)
 
+func change_state(new_state) -> void:
+	state = new_state
+	var coords_x = hero_frames[new_state]
+	
+	$Sprite.region_rect = Rect2(coords_x, 0, 32 ,32)
+	
+	if new_state == hero_states.DEAD:
+		velocity.y = -300
+		$CollisionShape2D.disabled = true
+		$Camera2D.current = false
+		yield(get_tree().create_timer(2.5), "timeout")
+
 func collect_key() -> void:
 	self.keys_collected += 1
 
@@ -79,6 +108,7 @@ func use_key() -> void:
 
 func die() -> void:
 	timer.stop()
+	self.state = hero_states.DEAD
 
 func _on_Level_counter_prisoners(value) -> void:
 	self.prisoners_left = value
