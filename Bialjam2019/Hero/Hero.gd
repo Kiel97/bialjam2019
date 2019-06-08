@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal key_collected(value)
+
 const MOVE_SPEED = 125
 const JUMP_SPEED = -300
 const GRAVITY = 1000
@@ -33,3 +35,4 @@ func get_input() -> void:
 
 func collect_key() -> void:
 	keys_collected += 1
+	emit_signal("key_collected", keys_collected)
