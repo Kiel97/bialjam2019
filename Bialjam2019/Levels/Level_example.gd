@@ -7,14 +7,20 @@ export var end_top : int = 0
 export var end_left : int = 0
 export var end_right : int = 320
 
+export var time_to_complete : int = 9999
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_hero_camera_limits()
+	set_time_left()
 	get_prisoners_count()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
+
+func set_time_left() -> void:
+	$Hero.time_left = time_to_complete
 
 func set_hero_camera_limits() -> void:
 	var cam : Camera2D = $Hero/Camera2D

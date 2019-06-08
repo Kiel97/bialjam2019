@@ -27,5 +27,9 @@ region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="key_collected" from="." to="HUD" method="_on_Hero_key_collected"]
 [connection signal="prisoners_count" from="." to="HUD" method="_on_Hero_prisoners_count"]
+[connection signal="time_changed" from="." to="HUD" method="_on_Hero_time_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
