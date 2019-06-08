@@ -5,12 +5,11 @@ const JUMP_SPEED = -300
 const GRAVITY = 1000
 
 var velocity : Vector2 = Vector2()
+var keys_collected : int = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	get_input()
@@ -31,3 +30,6 @@ func get_input() -> void:
 		$Sprite.flip_h = true
 	if jump and is_on_floor():
 		velocity.y = JUMP_SPEED
+
+func collect_key() -> void:
+	keys_collected += 1
