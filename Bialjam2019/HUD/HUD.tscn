@@ -1,13 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
-[ext_resource path="res://HUD/key_icon.png" type="Texture" id=2]
-[ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=3]
-[ext_resource path="res://HUD/time_icon.png" type="Texture" id=4]
-[ext_resource path="res://HUD/prisoner_icon.png" type="Texture" id=5]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+[ext_resource path="res://HUD/dark_theme.tres" type="StyleBox" id=2]
+[ext_resource path="res://HUD/key_icon.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://HUD/time_icon.png" type="Texture" id=5]
+[ext_resource path="res://HUD/prisoner_icon.png" type="Texture" id=6]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -15,7 +13,7 @@ script = ExtResource( 1 )
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
 margin_bottom = 20.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 margin_right = 320.0
@@ -44,7 +42,7 @@ margin_bottom = 16.0
 [node name="KeyIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/KeysCollected"]
 margin_right = 16.0
 margin_bottom = 16.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="KeyCounter" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/KeysCollected"]
 margin_left = 20.0
@@ -52,7 +50,7 @@ margin_top = 3.0
 margin_right = 44.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 24, 10 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "x 00"
 
 [node name="TimeCounter" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
@@ -63,7 +61,7 @@ margin_bottom = 16.0
 [node name="TimeIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/TimeCounter"]
 margin_right = 16.0
 margin_bottom = 16.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="TimeLeft" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/TimeCounter"]
 margin_left = 20.0
@@ -71,7 +69,7 @@ margin_top = 3.0
 margin_right = 48.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 28, 10 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "9999"
 
 [node name="PrisonersCounter" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer"]
@@ -82,7 +80,7 @@ margin_bottom = 16.0
 [node name="PrisonerIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PrisonersCounter"]
 margin_right = 16.0
 margin_bottom = 16.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="PrisonersLeft" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/HBoxContainer/PrisonersCounter"]
 margin_left = 20.0
@@ -90,7 +88,7 @@ margin_top = 3.0
 margin_right = 46.0
 margin_bottom = 13.0
 rect_min_size = Vector2( 26, 10 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = " x 00"
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer"]
