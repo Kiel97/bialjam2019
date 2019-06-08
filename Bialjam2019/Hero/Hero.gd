@@ -7,6 +7,7 @@ const JUMP_SPEED = -300
 const GRAVITY = 1000
 
 var velocity : Vector2 = Vector2()
+
 var keys_collected : int = 0
 
 func _ready() -> void:

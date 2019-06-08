@@ -4,8 +4,8 @@
 [ext_resource path="res://Levels/background_misc_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Levels/ground_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Key/Key.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=6]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,7 +14,7 @@ script = ExtResource( 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 131074, 4, 0, 131080, 4, 0, 262149, 3, 0, 327683, 2, 0, 327688, 1, 0 )
+tile_data = PoolIntArray( 131074, 4, 0, 131080, 4, 0, 262149, 3, 0, 327683, 2, 0 )
 
 [node name="Blocks" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -33,8 +33,11 @@ position = Vector2( 176, 140 )
 [node name="Key2" parent="Collectibles/Keys" instance=ExtResource( 4 )]
 position = Vector2( 204, 176 )
 
-[node name="Cage" parent="." instance=ExtResource( 5 )]
-position = Vector2( 288, 168 )
-
-[node name="Hero" parent="." instance=ExtResource( 6 )]
+[node name="Hero" parent="." instance=ExtResource( 5 )]
 position = Vector2( 58, 157 )
+
+[node name="Cages" type="Node" parent="."]
+
+[node name="Cage" parent="Cages" instance=ExtResource( 6 )]
+position = Vector2( 260, 168 )
+state = 0
