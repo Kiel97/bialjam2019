@@ -18,5 +18,18 @@ func _ready() -> void:
 
 func set_cage_state(new_state) -> void:
 	state = new_state
-	var coords = sprite_state[state]
+	
+	var coords = sprite_state[new_state]
 	$Sprite.region_rect = Rect2(coords.x, coords.y, 48, 48)
+
+func _on_Cage_body_entered(body: PhysicsBody2D) -> void:
+	if body == null or state == cage_states.OPENED:
+		return
+	
+	if body.is_in_group("player"):
+		if body.keys_collected > 0:
+			if state == cage_states.PRISONER:
+				body.free_prisoner()
+			else:
+				body.substract_key()
+			self.state = cage_states.OPENED

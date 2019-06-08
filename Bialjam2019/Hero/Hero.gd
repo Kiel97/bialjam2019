@@ -41,6 +41,15 @@ func collect_key() -> void:
 	keys_collected += 1
 	refresh_key_counter()
 
+func free_prisoner() -> void:
+	substract_key()
+	prisoners_left -= 1
+	refresh_prisoners_counter()
+
+func substract_key() -> void:
+	keys_collected -= 1
+	refresh_key_counter()
+
 func refresh_key_counter() -> void:
 	emit_signal("key_collected", keys_collected)
 
