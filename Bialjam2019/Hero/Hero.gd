@@ -5,7 +5,7 @@ signal prisoners_count(value)
 signal time_changed(value)
 
 const MOVE_SPEED = 125
-const JUMP_SPEED = -300
+const JUMP_SPEED = -350
 const GRAVITY = 1000
 const TICKS_PER_SECOND = 21
 
