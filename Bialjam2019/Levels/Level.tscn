@@ -13,7 +13,7 @@ position = Vector2( 0, -3 )
 script = ExtResource( 1 )
 end_bottom = 1050
 end_right = 3250
-time_to_complete = 6000
+time_to_complete = 4000
 
 [node name="Misc" type="TileMap" parent="."]
 visible = false
