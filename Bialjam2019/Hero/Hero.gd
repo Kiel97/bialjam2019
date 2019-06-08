@@ -10,7 +10,7 @@ var velocity : Vector2 = Vector2()
 var keys_collected : int = 0
 
 func _ready() -> void:
-	pass
+	refresh_key_counter()
 
 func _process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
@@ -35,4 +35,7 @@ func get_input() -> void:
 
 func collect_key() -> void:
 	keys_collected += 1
+	refresh_key_counter()
+
+func refresh_key_counter() -> void:
 	emit_signal("key_collected", keys_collected)

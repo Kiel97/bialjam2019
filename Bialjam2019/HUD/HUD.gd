@@ -11,4 +11,4 @@ func _ready() -> void:
 #	pass
 
 func _on_Hero_key_collected(value) -> void:
-	keys_counter.text = "x " + str(value)
+	keys_counter.text = "x " + str(value).pad_zeros(2)
