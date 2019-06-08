@@ -1,3 +1,4 @@
+tool
 extends Area2D
 
 enum cage_states {PRISONER, OPENED, CLOSED}
