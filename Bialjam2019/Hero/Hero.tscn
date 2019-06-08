@@ -27,6 +27,7 @@ region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+smoothing_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 [connection signal="key_collected" from="." to="HUD" method="_on_Hero_key_collected"]
