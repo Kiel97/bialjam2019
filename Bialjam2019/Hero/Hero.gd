@@ -67,7 +67,7 @@ func get_input() -> void:
 	if jump and not(self.state in [hero_states.JUMP, hero_states.FALL]):
 		self.state = hero_states.JUMP
 		velocity.y = JUMP_SPEED
-	elif self.state == hero_states.JUMP and !is_on_floor() and velocity.y > 0:
+	elif self.state in [hero_states.JUMP, hero_states.IDLE] and !is_on_floor() and velocity.y > 0:
 		self.state = hero_states.FALL
 	elif self.state in [hero_states.JUMP, hero_states.FALL] and is_on_floor():
 		self.state = hero_states.IDLE
