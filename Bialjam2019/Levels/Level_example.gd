@@ -1,5 +1,7 @@
 extends Node2D
 
+signal counter_prisoners(value)
+
 export var end_bottom : int = 240
 export var end_top : int = 0
 export var end_left : int = 0
@@ -29,3 +31,4 @@ func get_prisoners_count():
 		if cage.state == cage.cage_states.PRISONER:
 			prisoners += 1
 	prints("Prisoners:", prisoners)
+	emit_signal("counter_prisoners", prisoners)

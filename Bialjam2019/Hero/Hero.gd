@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal key_collected(value)
+signal prisoners_count(value)
 
 const MOVE_SPEED = 125
 const JUMP_SPEED = -300
@@ -8,10 +9,12 @@ const GRAVITY = 1000
 
 var velocity : Vector2 = Vector2()
 
+var prisoners_left : int = 0
 var keys_collected : int = 0
 
 func _ready() -> void:
 	refresh_key_counter()
+	refresh_prisoners_counter()
 
 func _process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
@@ -40,3 +43,10 @@ func collect_key() -> void:
 
 func refresh_key_counter() -> void:
 	emit_signal("key_collected", keys_collected)
+
+func refresh_prisoners_counter() -> void:
+	emit_signal("prisoners_count", prisoners_left)
+
+func _on_Level_counter_prisoners(value) -> void:
+	prisoners_left = value
+	refresh_prisoners_counter()

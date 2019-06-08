@@ -13,3 +13,6 @@ func _ready() -> void:
 
 func _on_Hero_key_collected(value) -> void:
 	keys_counter.text = "x " + str(value).pad_zeros(2)
+
+func _on_Hero_prisoners_count(value) -> void:
+	prisoners_counter.text = "x " + str(value).pad_zeros(2)
