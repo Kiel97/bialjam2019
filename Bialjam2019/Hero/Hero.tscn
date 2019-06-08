@@ -21,3 +21,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
