@@ -17,3 +17,4 @@ func open_besttimes_file() -> void:
 		f.open(best_times_file, File.READ)
 		var content : String = f.get_as_text()
 		scoreboard_label.text = content
+		f.close()

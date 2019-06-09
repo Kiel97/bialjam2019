@@ -105,7 +105,7 @@ func change_state(new_state) -> void:
 	elif new_state == hero_states.WIN:
 		timer.stop()
 		yield(get_tree().create_timer(2.5), "timeout")
-		emit_signal("won")
+		emit_signal("won", time_left)
 
 func collect_key() -> void:
 	self.keys_collected += 1
