@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Level_example.gd" type="Script" id=1]
 [ext_resource path="res://Levels/background_misc_tileset.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Key/Key.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Music/game.ogg" type="AudioStream" id=8]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 0, -3 )
@@ -167,7 +168,13 @@ state = 0
 [node name="Hero" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 95, 556 )
+
+[node name="BackgroundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 [connection signal="counter_prisoners" from="." to="Hero" method="_on_Level_counter_prisoners"]
+[connection signal="tree_entered" from="." to="." method="_on_Level_tree_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_Level_tree_exiting"]
 [connection signal="died" from="Hero" to="." method="_on_Hero_died"]
 [connection signal="won" from="Hero" to="." method="_on_Hero_won"]
 

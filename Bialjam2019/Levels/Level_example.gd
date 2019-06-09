@@ -53,3 +53,9 @@ func store_score_to_file(score: int) -> void:
 	f.open("user://current_score.txt", File.WRITE)
 	f.store_string(str("Player", " " ,score))
 	f.close()
+
+func _on_Level_tree_entered() -> void:
+	$"/root/background_music".stop_playing_menu()
+
+func _on_Level_tree_exiting() -> void:
+	$"/root/background_music".start_playing_menu()
