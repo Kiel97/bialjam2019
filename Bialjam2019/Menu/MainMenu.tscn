@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://HUD/dark_theme.tres" type="StyleBox" id=2]
 [ext_resource path="res://Fonts/menu_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://game_icon.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Sound Effects/select.wav" type="AudioStream" id=6]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -104,6 +105,9 @@ custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = ExtResource( 5 )
 text = "Quit"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HowButton" to="." method="_on_HowButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TimesButton" to="." method="_on_TimesButton_pressed"]

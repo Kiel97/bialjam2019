@@ -9,6 +9,8 @@ func _ready() -> void:
 	open_besttimes_file()
 
 func _on_Button_pressed() -> void:
+	$SelectSound.play()
+	yield($SelectSound, "finished")
 	get_tree().change_scene("res://Menu/MainMenu.tscn")
 
 func open_besttimes_file() -> void:

@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hero/Hero.png" type="Texture" id=3]
+[ext_resource path="res://Sound Effects/jump_2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sound Effects/die2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sound Effects/key_collect.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound Effects/gate_cage_open.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound Effects/win.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 15 )
@@ -30,6 +35,23 @@ current = true
 smoothing_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 4 )
+
+[node name="DieSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 5 )
+
+[node name="KeyCollectSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 6 )
+
+[node name="CageGateOpenSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 7 )
+
+[node name="WinSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 8 )
 [connection signal="key_collected" from="." to="HUD" method="_on_Hero_key_collected"]
 [connection signal="prisoners_count" from="." to="HUD" method="_on_Hero_prisoners_count"]
 [connection signal="time_changed" from="." to="HUD" method="_on_Hero_time_changed"]

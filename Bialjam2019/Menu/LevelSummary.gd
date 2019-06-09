@@ -54,4 +54,6 @@ func save_new_high_scores(content : String) -> void:
 	f.close()
 
 func _on_Button_pressed() -> void:
+	$SelectSound.play()
+	yield($SelectSound, "finished")
 	get_tree().change_scene("res://Menu/MainMenu.tscn")

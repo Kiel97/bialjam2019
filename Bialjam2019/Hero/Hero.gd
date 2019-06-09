@@ -48,8 +48,8 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(idx)
 		if collision.collider.is_in_group("gate"):
 			if keys_collected > 0:
-				collision.collider.queue_free()
 				use_key()
+				collision.collider.queue_free()
 
 func get_input() -> void:
 	if Input.is_action_just_pressed("escape"):
@@ -70,6 +70,8 @@ func get_input() -> void:
 	if jump and not(self.state in [hero_states.JUMP, hero_states.FALL]):
 		self.state = hero_states.JUMP
 		velocity.y = JUMP_SPEED
+		$SFX/JumpSound.play()
+	
 	elif self.state in [hero_states.JUMP, hero_states.IDLE] and !is_on_floor() and velocity.y > 0:
 		self.state = hero_states.FALL
 	elif self.state in [hero_states.JUMP, hero_states.FALL] and is_on_floor():
@@ -97,6 +99,7 @@ func change_state(new_state) -> void:
 		$Sprite.region_rect = Rect2(coords_x, 0, 32 ,32)
 	
 	if new_state == hero_states.DEAD:
+		$SFX/DieSound.play()
 		velocity.y = -300
 		$CollisionShape2D.disabled = true
 		$Camera2D.current = false
@@ -104,10 +107,13 @@ func change_state(new_state) -> void:
 		emit_signal("died")
 	elif new_state == hero_states.WIN:
 		timer.stop()
-		yield(get_tree().create_timer(2.5), "timeout")
+		$SFX/WinSound.play()
+		yield($SFX/WinSound, "finished")
+		#yield(get_tree().create_timer(2.5), "timeout")
 		emit_signal("won", time_left)
 
 func collect_key() -> void:
+	$SFX/KeyCollectSound.play()
 	self.keys_collected += 1
 
 func free_prisoner() -> void:
@@ -116,6 +122,7 @@ func free_prisoner() -> void:
 
 func use_key() -> void:
 	self.keys_collected -= 1
+	$SFX/CageGateOpenSound.play()
 
 func die() -> void:
 	timer.stop()
