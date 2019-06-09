@@ -106,6 +106,7 @@ func change_state(new_state) -> void:
 		yield(get_tree().create_timer(2.5), "timeout")
 		emit_signal("died")
 	elif new_state == hero_states.WIN:
+		velocity = Vector2(0,0)
 		timer.stop()
 		$SFX/WinSound.play()
 		yield($SFX/WinSound, "finished")
