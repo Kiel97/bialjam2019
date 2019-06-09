@@ -13,7 +13,7 @@ position = Vector2( 0, -3 )
 script = ExtResource( 1 )
 end_bottom = 1050
 end_right = 3250
-time_to_complete = 50
+time_to_complete = 4000
 
 [node name="Misc" type="TileMap" parent="."]
 visible = false
@@ -94,6 +94,7 @@ position = Vector2( 2224, 324 )
 position = Vector2( 1151, 72 )
 
 [node name="Cages" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Cage" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 612, 453 )
@@ -101,58 +102,72 @@ state = 0
 
 [node name="Cage2" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 816, 518 )
+state = 2
 
 [node name="Cage3" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1081, 646 )
+state = 0
 
 [node name="Cage4" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1208, 646 )
 
 [node name="Cage5" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1144, 293 )
+state = 0
 
 [node name="Cage6" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1391, 293 )
+state = 2
 
 [node name="Cage7" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1523, 293 )
+state = 2
 
 [node name="Cage8" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1308, 901 )
+state = 0
 
 [node name="Cage9" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1539, 933 )
 
 [node name="Cage10" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2199, 869 )
+state = 0
 
 [node name="Cage11" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2015, 646 )
+state = 0
 
 [node name="Cage12" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2572, 614 )
+state = 2
 
 [node name="Cage13" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2768, 485 )
+state = 0
 
 [node name="Cage14" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 3086, 230 )
+state = 0
 
 [node name="Cage15" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2768, 230 )
+state = 2
 
 [node name="Cage16" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2700, 230 )
 
 [node name="Cage17" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2512, 230 )
+state = 0
 
 [node name="Cage18" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2447, 230 )
+state = 0
 
 [node name="Hero" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
-position = Vector2( 563, 393 )
+position = Vector2( 95, 556 )
 [connection signal="counter_prisoners" from="." to="Hero" method="_on_Level_counter_prisoners"]
 [connection signal="died" from="Hero" to="." method="_on_Hero_died"]
 [connection signal="won" from="Hero" to="." method="_on_Hero_won"]
