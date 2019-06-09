@@ -41,7 +41,15 @@ func get_prisoners_count():
 	emit_signal("counter_prisoners", prisoners)
 
 func _on_Hero_died() -> void:
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+	get_tree().reload_current_scene()
 
-func _on_Hero_won() -> void:
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+func _on_Hero_won(score : int) -> void:
+	store_score_to_file(score)
+	
+	get_tree().change_scene("res://Menu/LevelSummary.tscn")
+
+func store_score_to_file(score: int) -> void:
+	var f : File = File.new()
+	f.open("user://current_score.txt", File.WRITE)
+	f.store_string(str("Player", " " ,score))
+	f.close()

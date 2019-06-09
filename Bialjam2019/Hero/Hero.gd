@@ -52,6 +52,9 @@ func _physics_process(delta: float) -> void:
 				use_key()
 
 func get_input() -> void:
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene("res://Menu/MainMenu.tscn")
+	
 	var left = Input.is_action_pressed("move_left")
 	var right = Input.is_action_pressed("move_right")
 	var jump = Input.is_action_just_pressed("jump")
@@ -102,7 +105,7 @@ func change_state(new_state) -> void:
 	elif new_state == hero_states.WIN:
 		timer.stop()
 		yield(get_tree().create_timer(2.5), "timeout")
-		emit_signal("won")
+		emit_signal("won", time_left)
 
 func collect_key() -> void:
 	self.keys_collected += 1
