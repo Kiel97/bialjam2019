@@ -7,7 +7,6 @@
 [ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=5]
 
 [node name="MainMenu" type="PanelContainer"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = ExtResource( 1 )
@@ -104,4 +103,5 @@ custom_styles/normal = ExtResource( 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "Quit"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HowButton" to="." method="_on_HowButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
