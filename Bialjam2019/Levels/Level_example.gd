@@ -51,5 +51,5 @@ func _on_Hero_won(score : int) -> void:
 func store_score_to_file(score: int) -> void:
 	var f : File = File.new()
 	f.open("user://current_score.txt", File.WRITE)
-	f.store_string(str(score))
+	f.store_string(str("Player", " " ,score))
 	f.close()
