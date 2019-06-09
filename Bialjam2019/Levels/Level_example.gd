@@ -41,7 +41,7 @@ func get_prisoners_count():
 	emit_signal("counter_prisoners", prisoners)
 
 func _on_Hero_died() -> void:
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+	get_tree().reload_current_scene()
 
 func _on_Hero_won() -> void:
 	get_tree().change_scene("res://Menu/MainMenu.tscn")
