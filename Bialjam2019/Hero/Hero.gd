@@ -4,6 +4,9 @@ signal key_collected(value)
 signal prisoners_count(value)
 signal time_changed(value)
 
+signal died
+signal won
+
 const MOVE_SPEED = 125
 const JUMP_SPEED = -353
 const GRAVITY = 1000
@@ -14,7 +17,7 @@ var hero_frames = {hero_states.IDLE: 0,
 					hero_states.FALL: 64,
 					hero_states.DEAD: 96}
 
-enum hero_states {IDLE, JUMP, FALL, DEAD}
+enum hero_states {IDLE, JUMP, FALL, DEAD, WIN}
 
 onready var timer : Timer = $Timer
 
@@ -34,13 +37,10 @@ func _process(delta: float) -> void:
 	if self.state != hero_states.DEAD:
 		if time_left == 0:
 			die()
-		else:
+		elif self.state != hero_states.WIN:
 			get_input()
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
-	
-	#if time_left == 0 and self.state != hero_states.DEAD:
-	#	die()
 
 func _physics_process(delta: float) -> void:
 	
@@ -75,6 +75,9 @@ func get_input() -> void:
 func set_prisoners_left(value: int) -> void:
 	prisoners_left = value
 	emit_signal("prisoners_count", self.prisoners_left)
+	
+	if prisoners_left == 0:
+		self.state = hero_states.WIN
 
 func set_keys_collected(value: int) -> void:
 	keys_collected = value
@@ -86,15 +89,20 @@ func set_time_left(value: int) -> void:
 
 func change_state(new_state) -> void:
 	state = new_state
-	var coords_x = hero_frames[new_state]
-	
-	$Sprite.region_rect = Rect2(coords_x, 0, 32 ,32)
+	if new_state != hero_states.WIN:
+		var coords_x = hero_frames[new_state]
+		$Sprite.region_rect = Rect2(coords_x, 0, 32 ,32)
 	
 	if new_state == hero_states.DEAD:
 		velocity.y = -300
 		$CollisionShape2D.disabled = true
 		$Camera2D.current = false
 		yield(get_tree().create_timer(2.5), "timeout")
+		emit_signal("died")
+	elif new_state == hero_states.WIN:
+		timer.stop()
+		yield(get_tree().create_timer(2.5), "timeout")
+		emit_signal("won")
 
 func collect_key() -> void:
 	self.keys_collected += 1

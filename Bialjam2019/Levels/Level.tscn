@@ -169,5 +169,7 @@ state = 0
 editor/display_folded = true
 position = Vector2( 95, 556 )
 [connection signal="counter_prisoners" from="." to="Hero" method="_on_Level_counter_prisoners"]
+[connection signal="died" from="Hero" to="." method="_on_Hero_died"]
+[connection signal="won" from="Hero" to="." method="_on_Hero_won"]
 
 [editable path="Hero"]
