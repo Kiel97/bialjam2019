@@ -8,3 +8,6 @@ func _on_QuitButton_pressed() -> void:
 
 func _on_HowButton_pressed() -> void:
 	get_tree().change_scene("res://Menu/HelpScreen.tscn")
+
+func _on_TimesButton_pressed() -> void:
+	get_tree().change_scene("res://Menu/BestTimesScreen.tscn")
