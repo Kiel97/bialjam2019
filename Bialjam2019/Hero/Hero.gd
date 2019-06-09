@@ -52,6 +52,9 @@ func _physics_process(delta: float) -> void:
 				use_key()
 
 func get_input() -> void:
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene("res://Menu/MainMenu.tscn")
+	
 	var left = Input.is_action_pressed("move_left")
 	var right = Input.is_action_pressed("move_right")
 	var jump = Input.is_action_just_pressed("jump")
