@@ -8,10 +8,14 @@ func _ready() -> void:
 	#print(OS.get_user_data_dir())
 	open_besttimes_file()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("escape"):
+		go_to_main_menu()
+
 func _on_Button_pressed() -> void:
 	$SelectSound.play()
 	yield($SelectSound, "finished")
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+	go_to_main_menu()
 
 func open_besttimes_file() -> void:
 	var f : File = File.new()
@@ -25,3 +29,6 @@ func open_besttimes_file() -> void:
 	var content : String = f.get_as_text()
 	scoreboard_label.text = content
 	f.close()
+
+func go_to_main_menu() -> void:
+	get_tree().change_scene("res://Menu/MainMenu.tscn")
