@@ -110,6 +110,7 @@ state = 0
 
 [node name="Cage4" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1208, 646 )
+state = 1
 
 [node name="Cage5" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1144, 293 )
@@ -129,6 +130,7 @@ state = 0
 
 [node name="Cage9" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1539, 933 )
+state = 1
 
 [node name="Cage10" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2199, 869 )
@@ -156,6 +158,7 @@ state = 2
 
 [node name="Cage16" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2700, 230 )
+state = 1
 
 [node name="Cage17" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2512, 230 )
