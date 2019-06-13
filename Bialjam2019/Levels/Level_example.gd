@@ -14,12 +14,7 @@ func _ready() -> void:
 	set_hero_camera_limits()
 	set_time_left()
 	get_prisoners_count()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("retry"):
-		get_tree().reload_current_scene()
-
+	
 func set_time_left() -> void:
 	$Hero.time_left = time_to_complete
 

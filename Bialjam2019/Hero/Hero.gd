@@ -9,6 +9,7 @@ signal won
 
 const MOVE_SPEED = 125
 const JUMP_SPEED = -353
+const DIE_JUMP_HEIGHT = -300
 const GRAVITY = 1000
 const TICKS_PER_SECOND = 21
 
@@ -54,6 +55,8 @@ func _physics_process(delta: float) -> void:
 func get_input() -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().change_scene("res://Menu/MainMenu.tscn")
+	if Input.is_action_just_pressed("retry"):
+		die()
 	
 	var left = Input.is_action_pressed("move_left")
 	var right = Input.is_action_pressed("move_right")
@@ -100,17 +103,17 @@ func change_state(new_state) -> void:
 	
 	if new_state == hero_states.DEAD:
 		$SFX/DieSound.play()
-		velocity.y = -300
+		velocity.y = DIE_JUMP_HEIGHT
 		$CollisionShape2D.disabled = true
 		$Camera2D.current = false
 		yield(get_tree().create_timer(2.5), "timeout")
 		emit_signal("died")
+	
 	elif new_state == hero_states.WIN:
 		velocity = Vector2(0,0)
 		timer.stop()
 		$SFX/WinSound.play()
 		yield($SFX/WinSound, "finished")
-		#yield(get_tree().create_timer(2.5), "timeout")
 		emit_signal("won", time_left)
 
 func collect_key() -> void:
