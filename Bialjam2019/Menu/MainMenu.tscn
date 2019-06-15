@@ -43,24 +43,38 @@ margin_bottom = 236.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 238.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 244.0
 margin_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 244.0
+margin_bottom = 178.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 182.0
+margin_right = 244.0
+margin_bottom = 192.0
+custom_fonts/font = ExtResource( 5 )
+text = "v. 1.0.0"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 242.0
+editor/display_folded = true
+margin_left = 248.0
 margin_right = 300.0
 margin_bottom = 192.0
 alignment = 1
 
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 70.0
-margin_right = 58.0
+margin_right = 52.0
 margin_bottom = 80.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
@@ -70,22 +84,10 @@ custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = ExtResource( 5 )
 text = "Start game"
 
-[node name="HowButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 84.0
-margin_right = 58.0
-margin_bottom = 94.0
-custom_styles/hover = ExtResource( 2 )
-custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
-custom_styles/disabled = ExtResource( 2 )
-custom_styles/normal = ExtResource( 2 )
-custom_fonts/font = ExtResource( 5 )
-text = "How to play?"
-
 [node name="TimesButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 98.0
-margin_right = 58.0
-margin_bottom = 108.0
+margin_top = 84.0
+margin_right = 52.0
+margin_bottom = 94.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 2 )
@@ -94,9 +96,21 @@ custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = ExtResource( 5 )
 text = "Best Times"
 
+[node name="CreditsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 98.0
+margin_right = 52.0
+margin_bottom = 108.0
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "Credits"
+
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 112.0
-margin_right = 58.0
+margin_right = 52.0
 margin_bottom = 122.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
@@ -109,6 +123,6 @@ text = "Quit"
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HowButton" to="." method="_on_HowButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/TimesButton" to="." method="_on_TimesButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

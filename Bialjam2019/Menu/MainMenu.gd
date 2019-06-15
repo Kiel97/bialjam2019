@@ -10,10 +10,10 @@ func _on_QuitButton_pressed() -> void:
 	yield($SelectSound, "finished")
 	get_tree().quit()
 
-func _on_HowButton_pressed() -> void:
+func _on_CreditsButton_pressed() -> void:
 	$SelectSound.play()
 	yield($SelectSound, "finished")
-	get_tree().change_scene("res://Menu/HelpScreen.tscn")
+	get_tree().change_scene("res://Menu/CreditsScreen.tscn")
 
 func _on_TimesButton_pressed() -> void:
 	$SelectSound.play()
