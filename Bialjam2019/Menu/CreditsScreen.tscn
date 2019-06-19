@@ -40,7 +40,7 @@ margin_top = 55.0
 margin_right = 300.0
 margin_bottom = 78.0
 custom_fonts/font = ExtResource( 4 )
-text = "Game made by Krzysztof Kielczewski at BialJam 2019
+text = "Game made by Krzysztof Kielczewski (Kiel97) at BialJam 2019
 (7-9 June 2019)."
 
 [node name="UsedAssetsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
