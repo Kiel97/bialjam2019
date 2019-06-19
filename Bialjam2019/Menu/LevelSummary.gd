@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var score_label = $PanelContainer/MarginContainer/VBoxContainer/Score
+onready var score_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Score
 
 func _ready() -> void:
 	pass
