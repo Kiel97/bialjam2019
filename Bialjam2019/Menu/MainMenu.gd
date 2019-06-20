@@ -18,4 +18,4 @@ func _on_CreditsButton_pressed() -> void:
 func _on_TimesButton_pressed() -> void:
 	$SelectSound.play()
 	yield($SelectSound, "finished")
-	get_tree().change_scene("res://Menu/BestTimesScreen.tscn")
+	get_tree().change_scene("res://Menu/HighscoresScreen.tscn")

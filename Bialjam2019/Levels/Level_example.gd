@@ -39,15 +39,8 @@ func _on_Hero_died() -> void:
 	get_tree().reload_current_scene()
 
 func _on_Hero_won(score : int) -> void:
-	store_score_to_file(score)
-	
+	HighscoreManager.new_score = score
 	get_tree().change_scene("res://Menu/LevelSummary.tscn")
-
-func store_score_to_file(score: int) -> void:
-	var f : File = File.new()
-	f.open("user://current_score.txt", File.WRITE)
-	f.store_string(str("Player", " " ,score))
-	f.close()
 
 func _on_Level_tree_entered() -> void:
 	$"/root/background_music".stop_playing_menu()

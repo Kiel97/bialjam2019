@@ -1,57 +1,14 @@
 extends CanvasLayer
 
-#class SortScores:
-#	static func sort(a, b):
-#		if a[1] > b[1]:
-#			return true
-#		return false
+const YOUR_SCORE_MESSAGE : String = "Your score: %d"
+const IN_TOP_MESSAGE : String = "Congratulations! Your score is number %d!"
+const OUT_TOP_MESSAGE : String = "Sorry! Your score is below top scores."
 
-onready var score_label = $PanelContainer/MarginContainer/VBoxContainer/Score
+onready var comment_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Comment
+onready var score_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Score
 
 func _ready() -> void:
-	var score : PoolStringArray = open_last_score_from_file()
-	var highs : String = get_high_scores_from_file()
-	highs += "\n" + score.join(" ")
-	#update_highscore_file(score, highs)
-	save_new_high_scores(highs)
-
-func open_last_score_from_file() -> PoolStringArray:
-	var f : File = File.new()
-	
-	f.open("user://current_score.txt", File.READ)
-	var content : PoolStringArray = f.get_as_text().split(" ")
-	score_label.text = "Your score: " + content[1]
-	f.close()
-	
-	return content
-
-func get_high_scores_from_file() -> String:
-	var f : File = File.new()
-	if f.file_exists("user://besttimes.txt"):
-		f.open("user://besttimes.txt", File.READ)
-		var content : String = f.get_as_text()
-		f.close()
-		return content
-	return ""
-
-#func update_highscore_file(current : PoolStringArray, best : String) -> void:
-#	print(str(current[0], " ", current[1]))
-#	var s1 = best.split("\n")
-#	var s2 = []
-#	for score in s1:
-#		s2.append(score.split(" "))
-#	print(s1)
-#	print(s2)
-#	s2.append(current)
-#	s2.sort_custom(SortScores, "sort")
-#	print(s2)
-#	
-
-func save_new_high_scores(content : String) -> void:
-	var f = File.new()
-	f.open("user://besttimes.txt", File.WRITE)
-	f.store_string(content)
-	f.close()
+	update_summary()
 
 func _on_Button_pressed() -> void:
 	$SelectSound.play()
@@ -61,6 +18,15 @@ func _on_Button_pressed() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		go_to_main_menu()
+
+func update_summary() -> void:
+	score_label.text = YOUR_SCORE_MESSAGE % [HighscoreManager.new_score]
+	
+	var achieved_rank = HighscoreManager.insert_new_highscore()
+	if achieved_rank < HighscoreManager.SCORES_IN_TOP:
+		comment_label.text = IN_TOP_MESSAGE % [achieved_rank + 1]
+	else:
+		comment_label.text = OUT_TOP_MESSAGE
 
 func go_to_main_menu() -> void:
 	get_tree().change_scene("res://Menu/MainMenu.tscn")
