@@ -39,6 +39,7 @@ func _on_Hero_died() -> void:
 	get_tree().reload_current_scene()
 
 func _on_Hero_won(score : int) -> void:
+	HighscoreManager.new_score = score
 	get_tree().change_scene("res://Menu/LevelSummary.tscn")
 
 func _on_Level_tree_entered() -> void:

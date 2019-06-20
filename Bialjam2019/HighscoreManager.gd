@@ -2,8 +2,11 @@ extends Node
 
 const NAME_IDX = 0
 const SCORE_IDX = 1
+const SCORES_IN_TOP = 10
 
 var highscores_path := "user://highscores.txt"
+
+var new_score : int
 
 func _ready() -> void:
 	pass
@@ -27,3 +30,29 @@ func load_highscores_from_file() -> Array:
 	f.close()
 	
 	return scores
+
+func insert_new_highscore() -> int:
+	var scores : Array = load_highscores_from_file()
+	var i = 0
+	
+	while i < SCORES_IN_TOP:
+		if len(scores) == 0 or new_score > scores[i][SCORE_IDX]:
+			scores.insert(i, ["Player", new_score])
+			
+			if len(scores) > SCORES_IN_TOP:
+				scores.remove(SCORES_IN_TOP)
+			
+			save_highscores_to_file(scores)
+			break
+		i += 1
+	
+	return i
+
+func save_highscores_to_file(scores : Array) -> void:
+	var f := File.new()
+	f.open(highscores_path, File.WRITE)
+	
+	for score in scores:
+		f.store_line(score[0] + " " + str(score[1]))
+	
+	f.close()
