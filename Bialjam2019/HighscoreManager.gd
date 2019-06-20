@@ -36,7 +36,7 @@ func insert_new_highscore() -> int:
 	var i = 0
 	
 	while i < SCORES_IN_TOP:
-		if len(scores) == 0 or new_score > scores[i][SCORE_IDX]:
+		if len(scores) == i or new_score > scores[i][SCORE_IDX]:
 			scores.insert(i, ["Player", new_score])
 			
 			if len(scores) > SCORES_IN_TOP:
