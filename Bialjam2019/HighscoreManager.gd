@@ -31,22 +31,25 @@ func load_highscores_from_file() -> Array:
 	
 	return scores
 
-func insert_new_highscore() -> int:
+func get_new_highscore_rank() -> int:
 	var scores : Array = load_highscores_from_file()
-	var i = 0
+	var rank = 0
 	
-	while i < SCORES_IN_TOP:
-		if len(scores) == i or new_score > scores[i][SCORE_IDX]:
-			scores.insert(i, ["Player", new_score])
-			
-			if len(scores) > SCORES_IN_TOP:
-				scores.remove(SCORES_IN_TOP)
-			
-			save_highscores_to_file(scores)
+	while rank < SCORES_IN_TOP:
+		if len(scores) == rank or new_score > scores[rank][SCORE_IDX]:
 			break
-		i += 1
+		rank += 1
 	
-	return i
+	return rank
+
+func insert_new_highscore(score : int, rank : int, name : String) -> void:
+	var scores : Array = load_highscores_from_file()
+	scores.insert(rank, [name, score])
+	
+	if len(scores) > SCORES_IN_TOP:
+		scores.remove(SCORES_IN_TOP)
+	
+	save_highscores_to_file(scores)
 
 func save_highscores_to_file(scores : Array) -> void:
 	var f := File.new()
