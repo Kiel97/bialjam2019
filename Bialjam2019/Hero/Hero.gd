@@ -30,6 +30,7 @@ var keys_collected : int = 0 setget set_keys_collected
 var time_left : int = 9999 setget set_time_left
 
 func _ready() -> void:
+	set_physics_process(true)
 	timer.set_wait_time(pow(TICKS_PER_SECOND, -1))
 	timer.start()
 
@@ -111,6 +112,7 @@ func change_state(new_state) -> void:
 	
 	elif new_state == hero_states.WIN:
 		velocity = Vector2(0,0)
+		set_physics_process(false)
 		timer.stop()
 		$SFX/WinSound.play()
 		yield($SFX/WinSound, "finished")
