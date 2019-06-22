@@ -12,9 +12,16 @@ onready var save_score_button : Button = $PanelContainer/MarginContainer/VBoxCon
 onready var insert_name_cont : VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer
 onready var main_menu_button : Button = $PanelContainer/MarginContainer/VBoxContainer/Button
 onready var textedit : TextEdit = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/TextEdit
+onready var click_sound : AudioStreamPlayer = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/SaveScoreButton/ClickSound
 
 func _ready() -> void:
+	textedit.grab_focus()
 	update_summary()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("enter"):
+		if not save_score_button.disabled and insert_name_cont.visible:
+			_on_SaveScoreButton_pressed()
 
 func _on_Button_pressed() -> void:
 	$SelectSound.play()
@@ -26,24 +33,22 @@ func _input(event: InputEvent) -> void:
 		go_to_main_menu()
 
 func update_summary() -> void:
-	score_label.text = YOUR_SCORE_MESSAGE % [HighscoreManager.new_score]
+	var score = HighscoreManager.new_score
 	
+	score_label.text = YOUR_SCORE_MESSAGE % [score]
 	var achieved_rank = HighscoreManager.get_new_highscore_rank()
 	
 	if achieved_rank < HighscoreManager.SCORES_IN_TOP:
 		comment_label.text = IN_TOP_MESSAGE % [achieved_rank + 1]
 		
-		insert_name_cont.visible = true
-		main_menu_button.disabled = true
+		_toggle_player_name_popup(true)
 		
-		var score = HighscoreManager.new_score
 		yield(self, "saved_name")
-		HighscoreManager.insert_new_highscore(HighscoreManager.new_score, achieved_rank, textedit.text)
+		
+		HighscoreManager.insert_new_highscore(score, achieved_rank, textedit.text)
 		
 	else:
-		
-		insert_name_cont.visible = false
-		main_menu_button.disabled = false
+		_toggle_player_name_popup(false)
 		
 		comment_label.text = OUT_TOP_MESSAGE
 
@@ -54,7 +59,13 @@ func _on_TextEdit_text_changed(new_text: String) -> void:
 	save_score_button.disabled = true if len(new_text) == 0 else false
 
 func _on_SaveScoreButton_pressed() -> void:
-	emit_signal("saved_name")
+	click_sound.play()
 	
-	insert_name_cont.visible = false
-	main_menu_button.disabled = false
+	emit_signal("saved_name")
+	yield(click_sound, "finished")
+	
+	_toggle_player_name_popup(false)
+
+func _toggle_player_name_popup(new_state : bool) -> void:
+	insert_name_cont.visible = new_state
+	main_menu_button.disabled = new_state
