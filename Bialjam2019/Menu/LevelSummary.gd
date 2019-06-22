@@ -6,6 +6,8 @@ const OUT_TOP_MESSAGE : String = "Sorry! Your score is below top scores."
 
 onready var comment_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Comment
 onready var score_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Score
+onready var save_score_button : Button = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/SaveScoreButton
+
 
 func _ready() -> void:
 	update_summary()
@@ -30,3 +32,9 @@ func update_summary() -> void:
 
 func go_to_main_menu() -> void:
 	get_tree().change_scene("res://Menu/MainMenu.tscn")
+
+func _on_TextEdit_text_changed(new_text: String) -> void:
+	save_score_button.disabled = true if len(new_text) == 0 else false
+
+func _on_SaveScoreButton_pressed() -> void:
+	print("Save score")
