@@ -94,7 +94,7 @@ position = Vector2( 1151, 72 )
 editor/display_folded = true
 
 [node name="Cage" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 612, 453 )
+position = Vector2( 612, 454 )
 state = 0
 
 [node name="Cage2" parent="Cages" instance=ExtResource( 6 )]
@@ -107,30 +107,28 @@ state = 0
 
 [node name="Cage4" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 1208, 646 )
-state = 1
 
 [node name="Cage5" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 1144, 293 )
+position = Vector2( 1142, 294 )
 state = 0
 
 [node name="Cage6" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 1391, 293 )
+position = Vector2( 1391, 294 )
 state = 2
 
 [node name="Cage7" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 1523, 293 )
+position = Vector2( 1523, 294 )
 state = 2
 
 [node name="Cage8" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 1308, 901 )
+position = Vector2( 1308, 902 )
 state = 0
 
 [node name="Cage9" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 1539, 933 )
-state = 1
+position = Vector2( 1539, 934 )
 
 [node name="Cage10" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 2199, 869 )
+position = Vector2( 2199, 870 )
 state = 0
 
 [node name="Cage11" parent="Cages" instance=ExtResource( 6 )]
@@ -142,7 +140,7 @@ position = Vector2( 2572, 614 )
 state = 2
 
 [node name="Cage13" parent="Cages" instance=ExtResource( 6 )]
-position = Vector2( 2768, 485 )
+position = Vector2( 2768, 486 )
 state = 0
 
 [node name="Cage14" parent="Cages" instance=ExtResource( 6 )]
@@ -155,7 +153,6 @@ state = 2
 
 [node name="Cage16" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2700, 230 )
-state = 1
 
 [node name="Cage17" parent="Cages" instance=ExtResource( 6 )]
 position = Vector2( 2512, 230 )
