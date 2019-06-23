@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 end_bottom = 1050
 end_top = -100
 end_right = 3250
-time_to_complete = 4000
+time_to_complete = 5000
 
 [node name="Blocks" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
