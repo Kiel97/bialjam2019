@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Levels/Level_example.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://B&W Simple Tileset/B&WTileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Help Sprites/HelpSection.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Gate/Gate.tscn" type="PackedScene" id=4]
