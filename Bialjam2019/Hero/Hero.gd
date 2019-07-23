@@ -21,6 +21,10 @@ var hero_frames = {hero_states.IDLE: 0,
 enum hero_states {IDLE, JUMP, FALL, DEAD, WIN}
 
 onready var timer : Timer = $Timer
+onready var touchpad : CanvasLayer = $Touchpad
+onready var left_button : TextureButton = $Touchpad/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/LeftButton
+onready var right_button : TextureButton = $Touchpad/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/RightButton
+onready var jump_button : TextureButton = $Touchpad/MarginContainer/VBoxContainer/HBoxContainer/JumpButton
 
 var velocity : Vector2 = Vector2()
 var state : int = hero_states.IDLE setget change_state
@@ -59,9 +63,9 @@ func get_input() -> void:
 	if Input.is_action_just_pressed("retry"):
 		die()
 	
-	var left = Input.is_action_pressed("move_left")
-	var right = Input.is_action_pressed("move_right")
-	var jump = Input.is_action_just_pressed("jump")
+	var left = Input.is_action_pressed("move_left") || left_button.is_pressed()
+	var right = Input.is_action_pressed("move_right") || right_button.is_pressed()
+	var jump = Input.is_action_just_pressed("jump") || jump_button.is_pressed()
 	
 	velocity.x = 0
 	if right:
