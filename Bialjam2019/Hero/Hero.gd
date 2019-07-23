@@ -21,7 +21,7 @@ var hero_frames = {hero_states.IDLE: 0,
 enum hero_states {IDLE, JUMP, FALL, DEAD, WIN}
 
 onready var timer : Timer = $Timer
-onready var touchpad : CanvasLayer = $Touchpad
+onready var touchpad_margin : MarginContainer = $Touchpad/MarginContainer
 onready var left_button : TextureButton = $Touchpad/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/LeftButton
 onready var right_button : TextureButton = $Touchpad/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/RightButton
 onready var jump_button : TextureButton = $Touchpad/MarginContainer/VBoxContainer/HBoxContainer/JumpButton
@@ -35,6 +35,7 @@ var time_left : int = 9999 setget set_time_left
 
 func _ready() -> void:
 	set_physics_process(true)
+	init_touchpad()
 	timer.set_wait_time(pow(TICKS_PER_SECOND, -1))
 	timer.start()
 
@@ -137,6 +138,9 @@ func use_key() -> void:
 func die() -> void:
 	timer.stop()
 	self.state = hero_states.DEAD
+
+func init_touchpad() -> void:
+	touchpad_margin.visible = OS.get_name() == "Android"
 
 func _on_Level_counter_prisoners(value) -> void:
 	self.prisoners_left = value
