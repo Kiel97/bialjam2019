@@ -25,6 +25,8 @@ onready var touchpad : Node2D = $TouchpadLayout/Touchpad
 onready var left_button := $TouchpadLayout/Touchpad/LeftButton
 onready var right_button := $TouchpadLayout/Touchpad/RightButton
 onready var jump_button := $TouchpadLayout/Touchpad/JumpButton
+onready var retry_button := $TouchpadLayout/Touchpad/RetryButton
+onready var menu_button := $TouchpadLayout/Touchpad/MenuButton
 
 var velocity : Vector2 = Vector2()
 var state : int = hero_states.IDLE setget change_state
@@ -59,9 +61,9 @@ func _physics_process(delta: float) -> void:
 				collision.collider.queue_free()
 
 func get_input() -> void:
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("escape") || menu_button.is_pressed():
 		get_tree().change_scene("res://Menu/MainMenu.tscn")
-	if Input.is_action_just_pressed("retry"):
+	if Input.is_action_just_pressed("retry") || retry_button.is_pressed():
 		die()
 	
 	var left = Input.is_action_pressed("move_left") || left_button.is_pressed()
