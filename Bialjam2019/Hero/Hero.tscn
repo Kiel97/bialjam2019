@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Hero/Hero.gd" type="Script" id=1]
-[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Hero/Hero.png" type="Texture" id=3]
-[ext_resource path="res://Sound Effects/jump_2.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sound Effects/die2.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sound Effects/key_collect.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sound Effects/gate_cage_open.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sound Effects/win.wav" type="AudioStream" id=8]
+[ext_resource path="res://Touch Control Overlay/Touchpad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hero/Hero.png" type="Texture" id=4]
+[ext_resource path="res://Sound Effects/jump_2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sound Effects/die2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound Effects/key_collect.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sound Effects/gate_cage_open.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sound Effects/win.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 15 )
@@ -20,13 +21,16 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="HUD" parent="." instance=ExtResource( 2 )]
+[node name="TouchpadLayout" parent="." instance=ExtResource( 2 )]
+layer = 2
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
@@ -39,19 +43,19 @@ smoothing_enabled = true
 [node name="SFX" type="Node" parent="."]
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 4 )
-
-[node name="DieSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 5 )
 
-[node name="KeyCollectSound" type="AudioStreamPlayer" parent="SFX"]
+[node name="DieSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 6 )
 
-[node name="CageGateOpenSound" type="AudioStreamPlayer" parent="SFX"]
+[node name="KeyCollectSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 7 )
 
-[node name="WinSound" type="AudioStreamPlayer" parent="SFX"]
+[node name="CageGateOpenSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
+
+[node name="WinSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 9 )
 [connection signal="key_collected" from="." to="HUD" method="_on_Hero_key_collected"]
 [connection signal="prisoners_count" from="." to="HUD" method="_on_Hero_prisoners_count"]
 [connection signal="time_changed" from="." to="HUD" method="_on_Hero_time_changed"]

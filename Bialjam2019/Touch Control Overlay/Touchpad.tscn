@@ -1,0 +1,40 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Help Sprites/left_key.png" type="Texture" id=1]
+[ext_resource path="res://Help Sprites/left_key_pressed.png" type="Texture" id=2]
+[ext_resource path="res://Help Sprites/r_key.png" type="Texture" id=3]
+[ext_resource path="res://Help Sprites/r_key_pressed.png" type="Texture" id=4]
+[ext_resource path="res://Help Sprites/esc_key.png" type="Texture" id=5]
+[ext_resource path="res://Help Sprites/esc_key_pressed.png" type="Texture" id=6]
+[ext_resource path="res://Help Sprites/right_key.png" type="Texture" id=7]
+[ext_resource path="res://Help Sprites/right_key_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Help Sprites/space_key.png" type="Texture" id=9]
+[ext_resource path="res://Help Sprites/space_key_pressed.png" type="Texture" id=10]
+
+[node name="TouchpadLayout" type="CanvasLayer"]
+
+[node name="Touchpad" type="Node2D" parent="."]
+
+[node name="LeftButton" type="TouchScreenButton" parent="Touchpad"]
+position = Vector2( 15, 212 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+
+[node name="RetryButton" type="TouchScreenButton" parent="Touchpad"]
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+
+[node name="MenuButton" type="TouchScreenButton" parent="Touchpad"]
+position = Vector2( 287, 0 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+
+[node name="RightButton" type="TouchScreenButton" parent="Touchpad"]
+position = Vector2( 54, 212 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+
+[node name="JumpButton" type="TouchScreenButton" parent="Touchpad"]
+position = Vector2( 240, 212 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )

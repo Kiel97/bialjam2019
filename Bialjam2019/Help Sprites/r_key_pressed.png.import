@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_icon.png-389b50e564fffef90defc972f4d00b12.stex"
+path="res://.import/r_key_pressed.png-9e063b7da4edc5604e103e3f3e02ed2b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_icon.png"
-dest_files=[ "res://.import/game_icon.png-389b50e564fffef90defc972f4d00b12.stex" ]
+source_file="res://Help Sprites/r_key_pressed.png"
+dest_files=[ "res://.import/r_key_pressed.png-9e063b7da4edc5604e103e3f3e02ed2b.stex" ]
 
 [params]
 
