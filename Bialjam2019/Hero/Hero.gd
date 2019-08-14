@@ -16,9 +16,10 @@ const TICKS_PER_SECOND = 21
 var hero_anim = {hero_states.IDLE: "Idle",
 					hero_states.JUMP: "Jump",
 					hero_states.FALL: "Fall",
-					hero_states.DEAD: "Dead"}
+					hero_states.DEAD: "Dead",
+					hero_states.WALK: "Walk"}
 
-enum hero_states {IDLE, JUMP, FALL, DEAD, WIN}
+enum hero_states {IDLE, WALK, JUMP, FALL, DEAD, WIN}
 
 onready var timer : Timer = $Timer
 onready var touchpad : Node2D = $TouchpadLayout/Touchpad
@@ -78,12 +79,17 @@ func get_input() -> void:
 		velocity.x -= MOVE_SPEED
 		$Sprite.flip_h = true
 		
+	if abs(velocity.x) != 0 and self.state == hero_states.IDLE:
+		self.state = hero_states.WALK
+	if velocity.x == 0 and self.state == hero_states.WALK:
+		self.state = hero_states.IDLE
+	
 	if jump and not(self.state in [hero_states.JUMP, hero_states.FALL]):
 		self.state = hero_states.JUMP
 		velocity.y = JUMP_SPEED
 		$SFX/JumpSound.play()
 	
-	elif self.state in [hero_states.JUMP, hero_states.IDLE] and !is_on_floor() and velocity.y > 0:
+	elif self.state in [hero_states.JUMP, hero_states.IDLE, hero_states.WALK] and !is_on_floor() and velocity.y > 0:
 		self.state = hero_states.FALL
 	elif self.state in [hero_states.JUMP, hero_states.FALL] and is_on_floor():
 		self.state = hero_states.IDLE
