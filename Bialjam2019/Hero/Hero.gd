@@ -13,12 +13,13 @@ const DIE_JUMP_HEIGHT = -300
 const GRAVITY = 1000
 const TICKS_PER_SECOND = 21
 
-var hero_frames = {hero_states.IDLE: 0,
-					hero_states.JUMP: 32,
-					hero_states.FALL: 64,
-					hero_states.DEAD: 96}
+var hero_anim = {hero_states.IDLE: "Idle",
+					hero_states.JUMP: "Jump",
+					hero_states.FALL: "Fall",
+					hero_states.DEAD: "Dead",
+					hero_states.WALK: "Walk"}
 
-enum hero_states {IDLE, JUMP, FALL, DEAD, WIN}
+enum hero_states {IDLE, WALK, JUMP, FALL, DEAD, WIN}
 
 onready var timer : Timer = $Timer
 onready var touchpad : Node2D = $TouchpadLayout/Touchpad
@@ -78,12 +79,17 @@ func get_input() -> void:
 		velocity.x -= MOVE_SPEED
 		$Sprite.flip_h = true
 		
+	if abs(velocity.x) != 0 and self.state == hero_states.IDLE:
+		self.state = hero_states.WALK
+	if velocity.x == 0 and self.state == hero_states.WALK:
+		self.state = hero_states.IDLE
+	
 	if jump and not(self.state in [hero_states.JUMP, hero_states.FALL]):
 		self.state = hero_states.JUMP
 		velocity.y = JUMP_SPEED
 		$SFX/JumpSound.play()
 	
-	elif self.state in [hero_states.JUMP, hero_states.IDLE] and !is_on_floor() and velocity.y > 0:
+	elif self.state in [hero_states.JUMP, hero_states.IDLE, hero_states.WALK] and !is_on_floor() and velocity.y > 0:
 		self.state = hero_states.FALL
 	elif self.state in [hero_states.JUMP, hero_states.FALL] and is_on_floor():
 		self.state = hero_states.IDLE
@@ -106,8 +112,7 @@ func set_time_left(value: int) -> void:
 func change_state(new_state) -> void:
 	state = new_state
 	if new_state != hero_states.WIN:
-		var coords_x = hero_frames[new_state]
-		$Sprite.region_rect = Rect2(coords_x, 0, 32 ,32)
+		$AnimationPlayer.play(hero_anim[new_state])
 	
 	if new_state == hero_states.DEAD:
 		$SFX/DieSound.play()
@@ -119,6 +124,7 @@ func change_state(new_state) -> void:
 	
 	elif new_state == hero_states.WIN:
 		velocity = Vector2(0,0)
+		$AnimationPlayer.stop(true)
 		set_physics_process(false)
 		timer.stop()
 		$SFX/WinSound.play()

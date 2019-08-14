@@ -65,10 +65,9 @@ texture = ExtResource( 9 )
 position = Vector2( 0, -16 )
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 32, 0, 32, 32 )
+region_rect = Rect2( 64, 0, 32, 32 )
 
 [node name="RetryHelp" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 56, 0 )
 
 [node name="Key_Up" type="Sprite" parent="RetryHelp"]
@@ -80,4 +79,4 @@ texture = ExtResource( 10 )
 position = Vector2( 0, -16 )
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 96, 0, 32, 32 )
+region_rect = Rect2( 128, 0, 32, 32 )

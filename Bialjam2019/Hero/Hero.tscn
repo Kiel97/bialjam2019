@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Touch Control Overlay/Touchpad.tscn" type="PackedScene" id=2]
@@ -12,6 +12,92 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 15 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Dead"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Fall"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Jump"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Walk"
+length = 0.3
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="Hero" type="KinematicBody2D" groups=[
 "player",
@@ -29,9 +115,17 @@ layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Dead = SubResource( 3 )
+anims/Fall = SubResource( 5 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 4 )
+anims/Walk = SubResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
-region_enabled = true
+hframes = 5
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -41,6 +135,7 @@ smoothing_enabled = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="SFX" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 5 )
