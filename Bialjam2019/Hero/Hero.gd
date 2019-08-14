@@ -13,10 +13,10 @@ const DIE_JUMP_HEIGHT = -300
 const GRAVITY = 1000
 const TICKS_PER_SECOND = 21
 
-var hero_frames = {hero_states.IDLE: 0,
-					hero_states.JUMP: 32,
-					hero_states.FALL: 64,
-					hero_states.DEAD: 96}
+var hero_anim = {hero_states.IDLE: "Idle",
+					hero_states.JUMP: "Jump",
+					hero_states.FALL: "Fall",
+					hero_states.DEAD: "Dead"}
 
 enum hero_states {IDLE, JUMP, FALL, DEAD, WIN}
 
@@ -106,8 +106,7 @@ func set_time_left(value: int) -> void:
 func change_state(new_state) -> void:
 	state = new_state
 	if new_state != hero_states.WIN:
-		var coords_x = hero_frames[new_state]
-		$Sprite.region_rect = Rect2(coords_x, 0, 32 ,32)
+		$AnimationPlayer.play(hero_anim[new_state])
 	
 	if new_state == hero_states.DEAD:
 		$SFX/DieSound.play()
