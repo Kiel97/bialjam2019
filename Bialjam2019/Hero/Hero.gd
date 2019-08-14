@@ -124,6 +124,7 @@ func change_state(new_state) -> void:
 	
 	elif new_state == hero_states.WIN:
 		velocity = Vector2(0,0)
+		$AnimationPlayer.stop(true)
 		set_physics_process(false)
 		timer.stop()
 		$SFX/WinSound.play()
