@@ -2,6 +2,8 @@ extends Node2D
 
 signal counter_prisoners(value)
 
+export var level_name : String = "Default"
+
 export var end_bottom : int = 240
 export var end_top : int = 0
 export var end_left : int = 0
@@ -44,6 +46,8 @@ func _on_Hero_died() -> void:
 
 func _on_Hero_won(score : int) -> void:
 	HighscoreManager.new_score = score
+	HighscoreManager.level_name = level_name
+	
 	err = get_tree().change_scene("res://Menu/LevelSummary.tscn")
 	if err != OK:
 		ErrorReporter.raise_error(err)

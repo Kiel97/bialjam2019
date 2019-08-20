@@ -2,7 +2,7 @@ extends CanvasLayer
 
 onready var scoreboard_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Scoreboard
 
-const SCORE_STRING : String = "%d. %s - %d\n"
+const SCORE_STRING : String = "%d. %s - %d at \"%s\" level\n"
 
 var err : int
 
@@ -19,7 +19,7 @@ func display_highscores() -> void:
 		var i = 0
 		for score in scores:
 			i += 1
-			to_display += SCORE_STRING % [i, score[0], score[1]]
+			to_display += SCORE_STRING % [i, score[0], score[1], score[2]]
 
 	scoreboard_label.text = to_display.strip_edges()
 

@@ -29,6 +29,7 @@ func _input(event: InputEvent) -> void:
 
 func update_summary() -> void:
 	var score = HighscoreManager.new_score
+	var level_name = HighscoreManager.level_name
 	
 	score_label.text = YOUR_SCORE_MESSAGE % [score]
 	var achieved_rank = HighscoreManager.get_new_highscore_rank()
@@ -39,7 +40,7 @@ func update_summary() -> void:
 		toggle_player_name_popup(true)
 		
 		yield(self, "saved_name")
-		HighscoreManager.insert_new_highscore(score, achieved_rank, textedit.text)
+		HighscoreManager.insert_new_highscore(score, achieved_rank, textedit.text, level_name)
 		
 	else:
 		toggle_player_name_popup(false)
