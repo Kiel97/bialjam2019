@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menu/SelectLevel.gd" type="Script" id=1]
 [ext_resource path="res://HUD/dark_theme.tres" type="StyleBox" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Help Sprites/right_key.png" type="Texture" id=7]
 [ext_resource path="res://Help Sprites/right_key_pressed.png" type="Texture" id=8]
-[ext_resource path="res://Levels/Level_miniature.png" type="Texture" id=9]
-[ext_resource path="res://Sound Effects/select.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sound Effects/select.wav" type="AudioStream" id=9]
 
 [node name="SelectLevel" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -40,7 +39,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "Level name:"
 
 [node name="LevelSelector" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 44.0
 margin_right = 300.0
 margin_bottom = 76.0
@@ -58,7 +56,6 @@ margin_bottom = 32.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 custom_fonts/font = ExtResource( 6 )
-text = "Level 001"
 align = 1
 valign = 1
 max_lines_visible = 1
@@ -76,7 +73,6 @@ margin_right = 300.0
 margin_bottom = 222.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
@@ -115,7 +111,7 @@ custom_fonts/font = ExtResource( 6 )
 text = "Start game"
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/LevelSelector/LeftButton" to="." method="_on_LeftButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/LevelSelector/RightButton" to="." method="_on_RightButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BottomButtons/BackToMenuButton" to="." method="_on_BackToMenuButton_pressed"]
