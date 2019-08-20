@@ -14,7 +14,7 @@ onready var main_menu_button : Button = $PanelContainer/MarginContainer/VBoxCont
 onready var textedit : TextEdit = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/TextEdit
 onready var click_sound : AudioStreamPlayer = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/SaveScoreButton/ClickSound
 
-var err
+var err : int
 
 func _ready() -> void:
 	textedit.grab_focus()
