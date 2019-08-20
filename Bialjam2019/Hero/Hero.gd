@@ -65,7 +65,7 @@ func _physics_process(_delta: float) -> void:
 
 func get_input() -> void:
 	if Input.is_action_just_pressed("escape") || menu_button.is_pressed():
-		err = get_tree().change_scene("res://Menu/MainMenu.tscn")
+		err = get_tree().change_scene("res://Menu/SelectLevel.tscn")
 		if err != OK:
 			ErrorReporter.raise_error(err)
 	if Input.is_action_just_pressed("retry") || retry_button.is_pressed():

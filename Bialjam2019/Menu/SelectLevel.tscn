@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Menu/SelectLevel.gd" type="Script" id=1]
+[ext_resource path="res://HUD/dark_theme.tres" type="StyleBox" id=2]
+[ext_resource path="res://Fonts/menu_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Help Sprites/left_key.png" type="Texture" id=4]
+[ext_resource path="res://Help Sprites/left_key_pressed.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/interface_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Help Sprites/right_key.png" type="Texture" id=7]
+[ext_resource path="res://Help Sprites/right_key_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Sound Effects/select.wav" type="AudioStream" id=9]
+
+[node name="SelectLevel" type="CanvasLayer"]
+script = ExtResource( 1 )
+levels = [ {
+"miniature": "res://Levels/Level_miniature.png",
+"name": "Beginning",
+"path": "res://Levels/Level.tscn"
+}, {
+"miniature": "res://Levels/level_test_miniature.png",
+"name": "Test Level",
+"path": "res://Levels/Level_test.tscn"
+} ]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 320.0
+margin_bottom = 256.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 246.0
+
+[node name="LevelNameLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+text = "Level name:"
+
+[node name="LevelSelector" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 76.0
+
+[node name="LeftButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/LevelSelector"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+
+[node name="LevelName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/LevelSelector"]
+margin_left = 36.0
+margin_right = 264.0
+margin_bottom = 32.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = ExtResource( 6 )
+align = 1
+valign = 1
+max_lines_visible = 1
+
+[node name="RightButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/LevelSelector"]
+margin_left = 268.0
+margin_right = 300.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+
+[node name="LevelMiniature" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 300.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
+[node name="BottomButtons" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 226.0
+margin_right = 300.0
+margin_bottom = 236.0
+
+[node name="BackToMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BottomButtons"]
+margin_right = 61.0
+margin_bottom = 10.0
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 6 )
+text = "Back to Menu"
+
+[node name="Space" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/BottomButtons"]
+margin_left = 65.0
+margin_right = 244.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+
+[node name="StartGameButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/BottomButtons"]
+margin_left = 248.0
+margin_right = 300.0
+margin_bottom = 10.0
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 6 )
+text = "Start game"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/LevelSelector/LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/LevelSelector/RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BottomButtons/BackToMenuButton" to="." method="_on_BackToMenuButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BottomButtons/StartGameButton" to="." method="_on_StartGameButton_pressed"]
