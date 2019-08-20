@@ -22,12 +22,10 @@ func _ready() -> void:
 func _on_LeftButton_pressed() -> void:
 	play_select_sound()
 	self.current_index -= 1
-	update_selected_level()
 
 func _on_RightButton_pressed() -> void:
 	play_select_sound()
 	self.current_index += 1
-	update_selected_level()
 
 func _on_BackToMenuButton_pressed() -> void:
 	play_select_sound()
@@ -49,7 +47,9 @@ func update_selected_level() -> void:
 	level_miniature.texture = load(level_data["miniature"])
 
 func set_curr_index(value: int) -> void:
-	current_index = int(clamp(current_index + value, 0, levels.size() - 1))
+	current_index = int(clamp(value, 0, levels.size() - 1))
+	update_selected_level()
+	print_debug("Curr: ", current_index, " Value: ", value)
 
 func play_select_sound() -> void:
 	$SelectSound.play()
