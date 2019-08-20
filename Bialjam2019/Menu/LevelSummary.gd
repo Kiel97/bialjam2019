@@ -14,6 +14,8 @@ onready var main_menu_button : Button = $PanelContainer/MarginContainer/VBoxCont
 onready var textedit : TextEdit = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/TextEdit
 onready var click_sound : AudioStreamPlayer = $PanelContainer/MarginContainer/VBoxContainer/InsertNameContainer/VBoxContainer/SaveScoreButton/ClickSound
 
+var err : int
+
 func _ready() -> void:
 	textedit.grab_focus()
 	update_summary()
@@ -49,7 +51,9 @@ func toggle_player_name_popup(new_state : bool) -> void:
 	main_menu_button.disabled = new_state
 
 func go_to_main_menu() -> void:
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+	err = get_tree().change_scene("res://Menu/MainMenu.tscn")
+	if err != OK:
+		ErrorReporter.raise_error(err)
 
 func _on_Button_pressed() -> void:
 	$SelectSound.play()

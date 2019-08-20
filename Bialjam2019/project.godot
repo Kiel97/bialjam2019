@@ -23,9 +23,11 @@ config/icon="res://Game Icons/game_icon.png"
 
 background_music="*res://background_music.gd"
 HighscoreManager="*res://HighscoreManager.gd"
+ErrorReporter="*res://ErrorReporter.gd"
 
 [debug]
 
+gdscript/warnings/treat_warnings_as_errors=true
 gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]

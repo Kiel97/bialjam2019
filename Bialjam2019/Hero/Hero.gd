@@ -36,6 +36,8 @@ var prisoners_left : int = 0 setget set_prisoners_left
 var keys_collected : int = 0 setget set_keys_collected
 var time_left : int = 9999 setget set_time_left
 
+var err : int
+
 func _ready() -> void:
 	set_physics_process(true)
 	init_touchpad()
@@ -52,7 +54,7 @@ func _process(delta: float) -> void:
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	for idx in range(get_slide_count()):
 		var collision = get_slide_collision(idx)
@@ -63,7 +65,9 @@ func _physics_process(delta: float) -> void:
 
 func get_input() -> void:
 	if Input.is_action_just_pressed("escape") || menu_button.is_pressed():
-		get_tree().change_scene("res://Menu/MainMenu.tscn")
+		err = get_tree().change_scene("res://Menu/MainMenu.tscn")
+		if err != OK:
+			ErrorReporter.raise_error(err)
 	if Input.is_action_just_pressed("retry") || retry_button.is_pressed():
 		die()
 	

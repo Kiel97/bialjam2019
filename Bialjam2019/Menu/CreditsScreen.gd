@@ -1,7 +1,11 @@
 extends CanvasLayer
 
+var err : int
+
 func go_to_main_menu() -> void:
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+	err = get_tree().change_scene("res://Menu/MainMenu.tscn")
+	if err != OK:
+		ErrorReporter.raise_error(err)
 
 func _on_Button_pressed() -> void:
 	$SelectSound.play()
