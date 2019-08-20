@@ -4,6 +4,8 @@ onready var scoreboard_label : Label = $PanelContainer/MarginContainer/VBoxConta
 
 const SCORE_STRING : String = "%d. %s - %d\n"
 
+var err : int
+
 func _ready() -> void:
 	display_highscores()
 
@@ -31,4 +33,6 @@ func _on_Button_pressed() -> void:
 	go_to_main_menu()
 
 func go_to_main_menu() -> void:
-	get_tree().change_scene("res://Menu/MainMenu.tscn")
+	err = get_tree().change_scene("res://Menu/MainMenu.tscn")
+	if err != OK:
+		ErrorReporter.raise_error(err)

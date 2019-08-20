@@ -27,6 +27,7 @@ ErrorReporter="*res://ErrorReporter.gd"
 
 [debug]
 
+gdscript/warnings/treat_warnings_as_errors=true
 gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]

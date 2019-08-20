@@ -8,6 +8,8 @@ var highscores_path := "user://highscores.txt"
 
 var new_score : int
 
+var err : int
+
 func _ready() -> void:
 	pass
 
@@ -17,12 +19,14 @@ func load_highscores_from_file() -> Array:
 	var f : File = File.new()
 	
 	if not f.file_exists(highscores_path):
-		var err = f.open(highscores_path, File.WRITE)
+		err = f.open(highscores_path, File.WRITE)
 		if err != OK:
 			ErrorReporter.raise_error(err)
 		f.close()
 	
-	f.open(highscores_path, File.READ)
+	err = f.open(highscores_path, File.READ)
+	if err != OK:
+		ErrorReporter.raise_error(err)
 	var content : String = f.get_as_text().strip_edges()
 	if content != "":
 		for record in content.split("\n"):
@@ -55,7 +59,9 @@ func insert_new_highscore(score : int, rank : int, name : String) -> void:
 
 func save_highscores_to_file(scores : Array) -> void:
 	var f := File.new()
-	f.open(highscores_path, File.WRITE)
+	err = f.open(highscores_path, File.WRITE)
+	if err != OK:
+		ErrorReporter.raise_error(err)
 	
 	for score in scores:
 		f.store_line(score[0] + " " + str(score[1]))

@@ -9,6 +9,8 @@ export var end_right : int = 320
 
 export var time_to_complete : int = 9999
 
+var err : int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_hero_camera_limits()
@@ -36,11 +38,15 @@ func get_prisoners_count():
 	emit_signal("counter_prisoners", prisoners)
 
 func _on_Hero_died() -> void:
-	get_tree().reload_current_scene()
+	err = get_tree().reload_current_scene()
+	if err != OK:
+		ErrorReporter.raise_error(err)
 
 func _on_Hero_won(score : int) -> void:
 	HighscoreManager.new_score = score
-	get_tree().change_scene("res://Menu/LevelSummary.tscn")
+	err = get_tree().change_scene("res://Menu/LevelSummary.tscn")
+	if err != OK:
+		ErrorReporter.raise_error(err)
 
 func _on_Level_tree_entered() -> void:
 	$"/root/background_music".stop_playing_menu()
