@@ -4,9 +4,10 @@ const NAME_IDX = 0
 const SCORE_IDX = 1
 const SCORES_IN_TOP = 10
 
-var highscores_path := "user://highscores.txt"
+var highscores_path := "user://highscoresv2.txt"
 
 var new_score : int
+var level_name : String setget set_level_name
 
 var err : int
 
@@ -30,8 +31,8 @@ func load_highscores_from_file() -> Array:
 	var content : String = f.get_as_text().strip_edges()
 	if content != "":
 		for record in content.split("\n"):
-			var record_parts = record.split(" ")
-			scores.append([record_parts[0], int(record_parts[1])])
+			var record_parts = record.split(" -x")
+			scores.append([record_parts[0], int(record_parts[1]), record_parts[2]])
 			
 	f.close()
 	
@@ -48,9 +49,9 @@ func get_new_highscore_rank() -> int:
 	
 	return rank
 
-func insert_new_highscore(score : int, rank : int, name : String) -> void:
+func insert_new_highscore(score : int, rank : int, player_name : String, level_name : String) -> void:
 	var scores : Array = load_highscores_from_file()
-	scores.insert(rank, [name, score])
+	scores.insert(rank, [player_name, score, level_name])
 	
 	if len(scores) > SCORES_IN_TOP:
 		scores.remove(SCORES_IN_TOP)
@@ -64,6 +65,9 @@ func save_highscores_to_file(scores : Array) -> void:
 		ErrorReporter.raise_error(err)
 	
 	for score in scores:
-		f.store_line(score[0] + " " + str(score[1]))
+		f.store_line(score[0] + " -x" + str(score[1]) + " -x" + score[2])
 	
 	f.close()
+
+func set_level_name(value: String) -> void:
+	level_name = value
