@@ -19,6 +19,16 @@ var err : int
 func _ready() -> void:
 	update_selected_level()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("enter"):
+		_on_StartGameButton_pressed()
+	elif event.is_action_pressed("escape"):
+		_on_BackToMenuButton_pressed()
+	elif event.is_action_pressed("move_left"):
+		_on_LeftButton_pressed()
+	elif event.is_action_pressed("move_right"):
+		_on_RightButton_pressed()
+
 func _on_LeftButton_pressed() -> void:
 	play_select_sound()
 	self.current_index -= 1
