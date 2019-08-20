@@ -17,7 +17,9 @@ func load_highscores_from_file() -> Array:
 	var f : File = File.new()
 	
 	if not f.file_exists(highscores_path):
-		f.open(highscores_path, File.WRITE)
+		var err = f.open(highscores_path, File.WRITE)
+		if err != OK:
+			ErrorReporter.raise_error(err)
 		f.close()
 	
 	f.open(highscores_path, File.READ)

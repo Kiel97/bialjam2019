@@ -23,6 +23,7 @@ config/icon="res://Game Icons/game_icon.png"
 
 background_music="*res://background_music.gd"
 HighscoreManager="*res://HighscoreManager.gd"
+ErrorReporter="*res://ErrorReporter.gd"
 
 [debug]
 
