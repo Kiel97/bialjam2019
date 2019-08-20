@@ -12,6 +12,7 @@
 [node name="Level" type="Node2D"]
 position = Vector2( 0, -3 )
 script = ExtResource( 1 )
+level_name = "Beginning"
 end_bottom = 1050
 end_top = -100
 end_right = 3250
