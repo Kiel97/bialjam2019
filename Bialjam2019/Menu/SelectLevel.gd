@@ -19,7 +19,7 @@ func _on_RightButton_pressed() -> void:
 
 func _on_BackToMenuButton_pressed() -> void:
 	play_select_sound()
-	yield($SelectSound, "finished")			# I don't know it is required in this particular case
+	yield($SelectSound, "finished")  # I don't know why it is required in this particular case
 	err = get_tree().change_scene("res://Menu/MainMenu.tscn")
 	if err != OK:
 		ErrorReporter.raise_error(err)
