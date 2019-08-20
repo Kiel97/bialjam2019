@@ -17,7 +17,7 @@ levels = [ {
 "name": "Beginning",
 "path": "res://Levels/Level.tscn"
 }, {
-"miniature": "res://Levels/Level_miniature.png",
+"miniature": "res://Levels/level_test_miniature.png",
 "name": "Test Level",
 "path": "res://Levels/Level_test.tscn"
 } ]
