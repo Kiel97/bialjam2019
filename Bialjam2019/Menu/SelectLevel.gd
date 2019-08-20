@@ -12,6 +12,7 @@ onready var level_name_label : Label = $PanelContainer/MarginContainer/VBoxConta
 onready var level_miniature : TextureRect = $PanelContainer/MarginContainer/VBoxContainer/LevelMiniature
 
 var current_index : int = 0 setget set_curr_index
+var level_data : Dictionary
 
 var err : int
 
@@ -37,12 +38,12 @@ func _on_BackToMenuButton_pressed() -> void:
 
 func _on_StartGameButton_pressed() -> void:
 	play_select_sound()
-	err = get_tree().change_scene("res://Levels/Level.tscn")
+	err = get_tree().change_scene(level_data["path"])
 	if err != OK:
 		ErrorReporter.raise_error(err)
 
 func update_selected_level() -> void:
-	var level_data : Dictionary = levels[current_index]
+	level_data = levels[current_index]
 	
 	level_name_label.text = level_data["name"]
 	level_miniature.texture = load(level_data["miniature"])
