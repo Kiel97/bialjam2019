@@ -1,18 +1,13 @@
 extends CanvasLayer
 
 export var levels : Array = [
-	{
-		"name" : "Beginning",
-		"path" : "res://Levels/Level.tscn",
-		"miniature" : "res://Levels/Level_miniature.png"
-	}
+	Resource
 ]
 
 onready var level_name_label : Label = $PanelContainer/MarginContainer/VBoxContainer/LevelSelector/LevelName
 onready var level_miniature : TextureRect = $PanelContainer/MarginContainer/VBoxContainer/LevelMiniature
 
 var current_index : int = 0 setget set_curr_index
-var level_data : Dictionary
 
 var err : int
 
@@ -46,15 +41,15 @@ func _on_BackToMenuButton_pressed() -> void:
 
 func _on_StartGameButton_pressed() -> void:
 	play_select_sound()
-	err = get_tree().change_scene(level_data["path"])
+	err = get_tree().change_scene_to(levels[current_index])
 	if err != OK:
 		ErrorReporter.raise_error(err)
 
 func update_selected_level() -> void:
-	level_data = levels[current_index]
+	var lvl : PackedScene = levels[current_index].instance()
 	
-	level_name_label.text = level_data["name"]
-	level_miniature.texture = load(level_data["miniature"])
+	level_name_label.text = lvl.get_name()
+	level_miniature.texture = lvl.get_miniature()
 
 func set_curr_index(value: int) -> void:
 	current_index = int(clamp(value, 0, levels.size() - 1))

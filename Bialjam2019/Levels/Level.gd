@@ -2,7 +2,8 @@ extends Node2D
 
 signal counter_prisoners(value)
 
-export var level_name : String = "Default"
+export var level_name : String = "Default" setget ,get_name
+export var miniature : StreamTexture = null setget ,get_miniature
 
 export var end_bottom : int = 240
 export var end_top : int = 0
@@ -38,6 +39,12 @@ func get_prisoners_count():
 			prisoners += 1
 	
 	emit_signal("counter_prisoners", prisoners)
+
+func get_name() -> String:
+	return level_name
+
+func get_miniature() -> StreamTexture:
+	return miniature
 
 func _on_Hero_died() -> void:
 	err = get_tree().reload_current_scene()
