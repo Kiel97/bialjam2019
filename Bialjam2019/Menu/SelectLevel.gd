@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 export var levels : Array = [
-	"res://Levels/Level.tscn"
+	Resource
 ]
 
 onready var level_name_label : Label = $PanelContainer/MarginContainer/VBoxContainer/LevelSelector/LevelName
@@ -41,12 +41,12 @@ func _on_BackToMenuButton_pressed() -> void:
 
 func _on_StartGameButton_pressed() -> void:
 	play_select_sound()
-	err = get_tree().change_scene(levels[current_index])
+	err = get_tree().change_scene_to(levels[current_index])
 	if err != OK:
 		ErrorReporter.raise_error(err)
 
 func update_selected_level() -> void:
-	var lvl : PackedScene = load(levels[current_index]).instance()
+	var lvl : PackedScene = levels[current_index].instance()
 	
 	level_name_label.text = lvl.get_name()
 	level_miniature.texture = lvl.get_miniature()
