@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
-[ext_resource path="res://B&W Simple Tileset/B&WTileset.tres" type="TileSet" id=2]
-[ext_resource path="res://Key/Key.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Music/game.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Levels/level_test_miniature.png" type="Texture" id=2]
+[ext_resource path="res://B&W Simple Tileset/B&WTileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Key/Key.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Music/game.ogg" type="AudioStream" id=7]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 0, -3 )
 script = ExtResource( 1 )
 level_name = "Test level"
+miniature = ExtResource( 2 )
 end_bottom = 650
 end_top = -100
 end_left = -200
@@ -18,7 +20,7 @@ end_right = 400
 time_to_complete = 1000
 
 [node name="Blocks" type="TileMap" parent="."]
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 786428, 0, 0, 786429, 0, 131076, 786430, 0, 1, 786431, 0, 1, 720896, 0, 131076, 720897, 0, 131076, 720898, 0, 131076, 720899, 0, 131076, 720900, 0, 1, 720901, 0, 1, 720902, 0, 1, 720903, 0, 1, 720904, 0, 131076, 720905, 0, 2, 851964, 0, 65536, 851965, 0, 3, 851966, 0, 131073, 851967, 0, 4, 786432, 0, 4, 786433, 0, 131073, 786434, 0, 131073, 786435, 0, 131073, 786436, 0, 131073, 786437, 0, 131073, 786438, 0, 4, 786439, 0, 131073, 786440, 0, 5, 786441, 0, 65539, 917500, 0, 65536, 917501, 0, 65538, 851976, 0, 65536, 851977, 0, 65539, 983036, 0, 65541, 983037, 0, 65538, 917509, 0, 65540, 917512, 0, 65536, 917513, 0, 65538, 1048571, 0, 0, 1048572, 0, 131077, 1048573, 0, 65539, 983041, 0, 65540, 983048, 0, 65541, 983049, 0, 65539, 1114107, 0, 65536, 1114108, 0, 65537, 1114109, 0, 65538, 1048584, 0, 65536, 1048585, 0, 65538, 1179643, 0, 65536, 1179644, 0, 65537, 1179645, 0, 65539, 1179647, 0, 65540, 1114120, 0, 65536, 1114121, 0, 65538, 1245179, 0, 131072, 1245180, 0, 5, 1245181, 0, 65539, 1179656, 0, 65536, 1179657, 0, 65538, 1310716, 0, 65541, 1310717, 0, 131075, 1310718, 0, 1, 1310719, 0, 131076, 1245184, 0, 1, 1245185, 0, 131076, 1245186, 0, 131076, 1245187, 0, 1, 1245188, 0, 131076, 1245189, 0, 131076, 1245190, 0, 1, 1245191, 0, 1, 1245192, 0, 131077, 1245193, 0, 131075, 1245194, 0, 2, 1376252, 0, 65536, 1376253, 0, 65537, 1376254, 0, 65537, 1376255, 0, 65537, 1310720, 0, 65537, 1310721, 0, 65537, 1310722, 0, 65537, 1310723, 0, 65537, 1310724, 0, 65537, 1310725, 0, 65537, 1310726, 0, 65537, 1310727, 0, 65537, 1310728, 0, 65537, 1310729, 0, 65537, 1310730, 0, 65539, 1441788, 0, 131072, 1441789, 0, 131073, 1441790, 0, 131073, 1441791, 0, 4, 1376256, 0, 4, 1376257, 0, 131073, 1376258, 0, 131073, 1376259, 0, 131073, 1376260, 0, 4, 1376261, 0, 4, 1376262, 0, 4, 1376263, 0, 4, 1376264, 0, 131073, 1376265, 0, 131073, 1376266, 0, 131074 )
@@ -29,21 +31,21 @@ tile_data = PoolIntArray( 786428, 0, 0, 786429, 0, 131076, 786430, 0, 1, 786431,
 
 [node name="Keys" type="Node" parent="Collectibles"]
 
-[node name="Key" parent="Collectibles/Keys" instance=ExtResource( 3 )]
+[node name="Key" parent="Collectibles/Keys" instance=ExtResource( 4 )]
 position = Vector2( 32, 569 )
 
 [node name="Cages" type="Node" parent="."]
 
-[node name="Cage" parent="Cages" instance=ExtResource( 4 )]
+[node name="Cage" parent="Cages" instance=ExtResource( 5 )]
 position = Vector2( 165, 582 )
 state = 0
 
-[node name="Hero" parent="." instance=ExtResource( 5 )]
+[node name="Hero" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 position = Vector2( 95, 556 )
 
 [node name="BackgroundPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 autoplay = true
 [connection signal="counter_prisoners" from="." to="Hero" method="_on_Level_counter_prisoners"]
 [connection signal="tree_entered" from="." to="." method="_on_Level_tree_entered"]

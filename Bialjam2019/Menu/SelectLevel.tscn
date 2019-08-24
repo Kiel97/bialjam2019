@@ -12,15 +12,7 @@
 
 [node name="SelectLevel" type="CanvasLayer"]
 script = ExtResource( 1 )
-levels = [ {
-"miniature": "res://Levels/Level_miniature.png",
-"name": "Beginning",
-"path": "res://Levels/Level.tscn"
-}, {
-"miniature": "res://Levels/level_test_miniature.png",
-"name": "Test Level",
-"path": "res://Levels/Level_test.tscn"
-} ]
+levels = [ "res://Levels/Level.tscn", "res://Levels/Level_test.tscn" ]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
