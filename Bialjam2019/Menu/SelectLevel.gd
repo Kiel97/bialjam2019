@@ -53,7 +53,9 @@ func _on_StartGameButton_pressed() -> void:
 func update_selected_level() -> void:
 	level_data = levels[current_index]
 	
-	level_name_label.text = level_data["name"]
+	var lvl = load(levels[current_index]["path"]).instance()
+	
+	level_name_label.text = lvl.level_name
 	level_miniature.texture = load(level_data["miniature"])
 
 func set_curr_index(value: int) -> void:
