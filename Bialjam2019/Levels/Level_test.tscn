@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/level_test_miniature.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Key/Key.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Border Helper/BorderHelper.gd" type="Script" id=9]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 0, -3 )
@@ -15,8 +16,8 @@ script = ExtResource( 1 )
 level_name = "Test level"
 miniature = ExtResource( 2 )
 bgm = ExtResource( 3 )
-end_bottom = 650
-end_top = -100
+end_bottom = 660
+end_top = 350
 end_left = -200
 end_right = 400
 time_to_complete = 1000
@@ -48,6 +49,13 @@ state = 0
 [node name="Hero" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 95, 556 )
+
+[node name="BorderHelper" type="Node2D" parent="."]
+script = ExtResource( 9 )
+limit_bottom = 660
+limit_top = 350
+limit_left = -200
+limit_right = 400
 
 [node name="BackgroundPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
