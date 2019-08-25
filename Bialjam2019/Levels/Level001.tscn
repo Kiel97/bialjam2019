@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
-[ext_resource path="res://Levels/Level_miniature.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Level001_miniature.png" type="Texture" id=2]
 [ext_resource path="res://Music/game.ogg" type="AudioStream" id=3]
 [ext_resource path="res://B&W Simple Tileset/B&WTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Help Sprites/HelpSection.tscn" type="PackedScene" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Border Helper/BorderHelper.gd" type="Script" id=10]
+
 
 [node name="Level" type="Node2D"]
 position = Vector2( 0, -3 )
