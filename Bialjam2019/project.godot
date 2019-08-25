@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BorderHelper",
+"language": "GDScript",
+"path": "res://Levels/Border Helper/BorderHelper.gd"
+} ]
 _global_script_class_icons={
-
+"BorderHelper": ""
 }
 
 [application]

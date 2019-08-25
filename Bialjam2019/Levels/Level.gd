@@ -5,6 +5,7 @@ signal counter_prisoners(value)
 export var level_name : String = "Default" setget ,get_name
 export var miniature : StreamTexture = null setget ,get_miniature
 
+export var bgm : AudioStream = null
 export var end_bottom : int = 240
 export var end_top : int = 0
 export var end_left : int = 0
@@ -16,6 +17,7 @@ var err : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	play_bgm()
 	set_hero_camera_limits()
 	set_time_left()
 	get_prisoners_count()
@@ -45,6 +47,10 @@ func get_name() -> String:
 
 func get_miniature() -> StreamTexture:
 	return miniature
+
+func play_bgm() -> void:
+	$BackgroundPlayer.stream = bgm
+	$BackgroundPlayer.play()
 
 func _on_Hero_died() -> void:
 	err = get_tree().reload_current_scene()
