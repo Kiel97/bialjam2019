@@ -29,7 +29,8 @@ func set_color(value: Color) -> void:
 	update()
 
 func _draw() -> void:
-	draw_rect(_get_rect(), helper_color, false)
+	if Engine.editor_hint:
+		draw_rect(_get_rect(), helper_color, false)
 
 func _get_rect() -> Rect2:
 	var position : Vector2 = Vector2(limit_left, limit_top)
