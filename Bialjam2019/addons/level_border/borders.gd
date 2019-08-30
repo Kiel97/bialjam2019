@@ -1,5 +1,4 @@
 tool
-class_name BorderHelper
 extends Node2D
 
 export var limit_bottom : int = 200 setget set_bottom
