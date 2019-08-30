@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Menu/SelectLevel.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Level001.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level002.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/dark_theme.tres" type="StyleBox" id=4]
 [ext_resource path="res://Fonts/menu_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Help Sprites/left_key.png" type="Texture" id=6]
