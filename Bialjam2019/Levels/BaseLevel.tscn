@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/BaseLevel_miniature.png" type="Texture" id=2]
@@ -8,8 +8,8 @@
 [ext_resource path="res://Key/Key.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Cage/Cage.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/Border Helper/BorderHelper.gd" type="Script" id=9]
-
+[ext_resource path="res://addons/level_border/borders.gd" type="Script" id=9]
+[ext_resource path="res://addons/level_border/level_border_icon.svg" type="Texture" id=10]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 0, -3 )
@@ -51,8 +51,11 @@ state = 0
 editor/display_folded = true
 position = Vector2( 95, 556 )
 
-[node name="BorderHelper" type="Node2D" parent="."]
+[node name="LevelBorder" type="Node2D" parent="."]
 script = ExtResource( 9 )
+__meta__ = {
+"_editor_icon": ExtResource( 10 )
+}
 limit_bottom = 660
 limit_top = 350
 limit_left = -200
