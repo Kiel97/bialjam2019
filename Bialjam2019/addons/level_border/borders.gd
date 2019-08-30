@@ -37,3 +37,8 @@ func _get_rect() -> Rect2:
 	var rect : Rect2 = Rect2(position, size)
 	
 	return rect
+
+func _get_configuration_warning() -> String:
+	if get_parent().get_name() != "Level":
+		return "Level Border node should be attached only to Level named node."
+	return ""
