@@ -32,21 +32,22 @@ tile_data = PoolIntArray( 786428, 0, 0, 786429, 0, 131076, 786430, 0, 1, 786431,
 [node name="Gates" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Gate" parent="Gates" instance=ExtResource( 5 )]
+[node name="Gate001" parent="Gates" instance=ExtResource( 5 )]
 position = Vector2( -48, 589 )
 
 [node name="Collectibles" type="Node" parent="."]
 editor/display_folded = true
 
 [node name="Keys" type="Node" parent="Collectibles"]
+editor/display_folded = true
 
-[node name="Key" parent="Collectibles/Keys" instance=ExtResource( 6 )]
+[node name="Key001" parent="Collectibles/Keys" instance=ExtResource( 6 )]
 position = Vector2( 47, 590 )
 
 [node name="Cages" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Cage" parent="Cages" instance=ExtResource( 7 )]
+[node name="Cage001" parent="Cages" instance=ExtResource( 7 )]
 position = Vector2( 165, 582 )
 state = 0
 
@@ -63,6 +64,7 @@ limit_bottom = 660
 limit_top = 350
 limit_left = -200
 limit_right = 400
+helper_color = Color( 0, 0.6, 1, 0.5 )
 
 [node name="BackgroundPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
