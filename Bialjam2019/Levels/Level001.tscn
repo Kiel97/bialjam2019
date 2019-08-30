@@ -33,6 +33,7 @@ tile_data = PoolIntArray( -262111, 0, 0, -262110, 0, 2, -196575, 0, 65536, -1965
 position = Vector2( 121, 508 )
 
 [node name="Gates" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Gate" parent="Gates" instance=ExtResource( 6 )]
 position = Vector2( 1968, 781 )
