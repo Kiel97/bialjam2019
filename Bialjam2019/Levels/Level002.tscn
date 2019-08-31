@@ -70,7 +70,7 @@ position = Vector2( 399, 934 )
 position = Vector2( -209, 1066 )
 
 [node name="Key007" parent="Collectibles/Keys" index="6" instance=ExtResource( 5 )]
-position = Vector2( -209, 583 )
+position = Vector2( -209, 517 )
 
 [node name="Key008" parent="Collectibles/Keys" index="7" instance=ExtResource( 5 )]
 position = Vector2( 240, 899 )
@@ -102,7 +102,6 @@ state = 2
 
 [node name="Cage003" parent="Cages" index="2" instance=ExtResource( 6 )]
 position = Vector2( 86, 1470 )
-state = 1
 
 [node name="Cage004" parent="Cages" index="3" instance=ExtResource( 6 )]
 position = Vector2( -142, 1470 )
@@ -118,11 +117,9 @@ state = 0
 
 [node name="Cage007" parent="Cages" index="6" instance=ExtResource( 6 )]
 position = Vector2( -45, 958 )
-state = 1
 
 [node name="Cage008" parent="Cages" index="7" instance=ExtResource( 6 )]
 position = Vector2( -62, 1310 )
-state = 1
 
 [node name="Cage009" parent="Cages" index="8" instance=ExtResource( 6 )]
 position = Vector2( 287, 1470 )
@@ -138,7 +135,6 @@ state = 0
 
 [node name="Cage012" parent="Cages" index="11" instance=ExtResource( 6 )]
 position = Vector2( 480, 734 )
-state = 1
 
 [node name="Cage013" parent="Cages" index="12" instance=ExtResource( 6 )]
 position = Vector2( 439, 509 )
