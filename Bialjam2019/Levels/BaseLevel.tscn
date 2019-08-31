@@ -12,7 +12,6 @@
 [ext_resource path="res://addons/level_border/level_border_icon.svg" type="Texture" id=10]
 
 [node name="Level" type="Node2D"]
-position = Vector2( 0, -3 )
 script = ExtResource( 1 )
 level_name = "Test level"
 miniature = ExtResource( 2 )
