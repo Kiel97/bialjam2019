@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 const PROJECT_AUTHOR : String = "Kiel97"
-const PROJECT_VERSION : String = "1.2-dev"
+const PROJECT_VERSION : String = "1.2-beta1"
 const PROJECT_INFO : String = "v. %s by %s"
 
 onready var project_label : Label = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ProjectLabel
