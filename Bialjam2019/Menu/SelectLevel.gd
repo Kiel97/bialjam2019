@@ -54,7 +54,6 @@ func update_selected_level() -> void:
 func set_curr_index(value: int) -> void:
 	current_index = int(clamp(value, 0, levels.size() - 1))
 	update_selected_level()
-	print_debug("Curr: ", current_index, " Value: ", value)
 
 func play_select_sound() -> void:
 	$SelectSound.play()
