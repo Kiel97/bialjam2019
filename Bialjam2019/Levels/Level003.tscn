@@ -111,7 +111,7 @@ position = Vector2( 1175, 1088 )
 position = Vector2( 1588, 825 )
 
 [node name="Key012" parent="Collectibles/Keys" index="11" instance=ExtResource( 5 )]
-position = Vector2( 1312, 1016 )
+position = Vector2( 1312, 1006 )
 
 [node name="Key013" parent="Collectibles/Keys" index="12" instance=ExtResource( 5 )]
 position = Vector2( 1903, 497 )
